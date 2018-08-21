@@ -79,20 +79,20 @@
     
     for (int i = 0; i < count; i++)
     {
-        [entries addObject:[[PieChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + mult / 5) label:parties[i % parties.count]]];
+        [entries addObject:[[CHPieChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + mult / 5) label:parties[i % parties.count]]];
     }
     
-    PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:entries label:@"Election Results"];
+    CHPieChartDataSet *dataSet = [[CHPieChartDataSet alloc] initWithValues:entries label:@"Election Results"];
     dataSet.sliceSpace = 2.0;
     
     // add a lot of colors
     
     NSMutableArray *colors = [[NSMutableArray alloc] init];
-    [colors addObjectsFromArray:ChartColorTemplates.vordiplom];
-    [colors addObjectsFromArray:ChartColorTemplates.joyful];
-    [colors addObjectsFromArray:ChartColorTemplates.colorful];
-    [colors addObjectsFromArray:ChartColorTemplates.liberty];
-    [colors addObjectsFromArray:ChartColorTemplates.pastel];
+    [colors addObjectsFromArray:CHChartColorTemplates.vordiplom];
+    [colors addObjectsFromArray:CHChartColorTemplates.joyful];
+    [colors addObjectsFromArray:CHChartColorTemplates.colorful];
+    [colors addObjectsFromArray:CHChartColorTemplates.liberty];
+    [colors addObjectsFromArray:CHChartColorTemplates.pastel];
     [colors addObject:[UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]];
     
     dataSet.colors = colors;
@@ -103,7 +103,7 @@
     //dataSet.xValuePosition = PieChartValuePositionOutsideSlice;
     dataSet.yValuePosition = PieChartValuePositionOutsideSlice;
     
-    PieChartData *data = [[PieChartData alloc] initWithDataSet:dataSet];
+    CHPieChartData *data = [[CHPieChartData alloc] initWithDataSet:dataSet];
     
     NSNumberFormatter *pFormatter = [[NSNumberFormatter alloc] init];
     pFormatter.numberStyle = NSNumberFormatterPercentStyle;

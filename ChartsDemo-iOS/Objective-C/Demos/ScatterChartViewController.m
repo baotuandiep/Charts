@@ -110,17 +110,17 @@
         [yVals3 addObject:[[ChartDataEntry alloc] initWithX:(double)i + 0.66 y:val]];
     }
     
-    ScatterChartDataSet *set1 = [[ScatterChartDataSet alloc] initWithValues:yVals1 label:@"DS 1"];
+    CHScatterChartDataSet *set1 = [[CHScatterChartDataSet alloc] initWithValues:yVals1 label:@"DS 1"];
     [set1 setScatterShape:ScatterShapeSquare];
-    [set1 setColor:ChartColorTemplates.colorful[0]];
-    ScatterChartDataSet *set2 = [[ScatterChartDataSet alloc] initWithValues:yVals2 label:@"DS 2"];
+    [set1 setColor:CHChartColorTemplates.colorful[0]];
+    CHScatterChartDataSet *set2 = [[CHScatterChartDataSet alloc] initWithValues:yVals2 label:@"DS 2"];
     [set2 setScatterShape:ScatterShapeCircle];
-    set2.scatterShapeHoleColor = ChartColorTemplates.colorful[3];
+    set2.scatterShapeHoleColor = CHChartColorTemplates.colorful[3];
     set2.scatterShapeHoleRadius = 3.5f;
-    [set2 setColor:ChartColorTemplates.colorful[1]];
-    ScatterChartDataSet *set3 = [[ScatterChartDataSet alloc] initWithValues:yVals3 label:@"DS 3"];
+    [set2 setColor:CHChartColorTemplates.colorful[1]];
+    CHScatterChartDataSet *set3 = [[CHScatterChartDataSet alloc] initWithValues:yVals3 label:@"DS 3"];
     [set3 setScatterShape:ScatterShapeCross];
-    [set3 setColor:ChartColorTemplates.colorful[2]];
+    [set3 setColor:CHChartColorTemplates.colorful[2]];
     
     set1.scatterShapeSize = 8.0;
     set2.scatterShapeSize = 8.0;

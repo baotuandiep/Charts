@@ -31,7 +31,7 @@ class ColoredLineChartViewController: DemoBaseViewController {
     }
     
     func setupChart(_ chart: LineChartView, data: LineChartData, color: UIColor) {
-        (data.getDataSetByIndex(0) as! LineChartDataSet).circleHoleColor = color
+        (data.getDataSetByIndex(0) as! CHLineChartDataSet).circleHoleColor = color
         
         chart.delegate = self
         chart.backgroundColor = color
@@ -57,12 +57,12 @@ class ColoredLineChartViewController: DemoBaseViewController {
     }
     
     func dataWithCount(_ count: Int, range: UInt32) -> LineChartData {
-        let yVals = (0..<count).map { i -> ChartDataEntry in
+        let yVals = (0..<count).map { i -> CHChartDataEntry in
             let val = Double(arc4random_uniform(range)) + 3
-            return ChartDataEntry(x: Double(i), y: val)
+            return CHChartDataEntry(x: Double(i), y: val)
         }
         
-        let set1 = LineChartDataSet(values: yVals, label: "DataSet 1")
+        let set1 = CHLineChartDataSet(values: yVals, label: "DataSet 1")
         
         set1.lineWidth = 1.75
         set1.circleRadius = 5.0

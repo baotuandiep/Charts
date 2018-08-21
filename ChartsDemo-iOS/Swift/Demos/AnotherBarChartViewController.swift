@@ -75,7 +75,7 @@ class AnotherBarChartViewController: DemoBaseViewController {
             chartView.notifyDataSetChanged()
         } else {
             set1 = BarChartDataSet(values: yVals, label: "Data Set")
-            set1.colors = ChartColorTemplates.vordiplom()
+            set1.colors = CHChartColorTemplates.vordiplom()
             set1.drawValuesEnabled = false
             
             let data = BarChartData(dataSet: set1)

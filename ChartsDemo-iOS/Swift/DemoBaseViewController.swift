@@ -290,7 +290,7 @@ class DemoBaseViewController: UIViewController, ChartViewDelegate {
     }
     // TODO: Cannot override from extensions
     //extension DemoBaseViewController: ChartViewDelegate {
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+    func chartValueSelected(_ chartView: ChartViewBase, entry: CHChartDataEntry, highlight: Highlight) {
         NSLog("chartValueSelected");
     }
     

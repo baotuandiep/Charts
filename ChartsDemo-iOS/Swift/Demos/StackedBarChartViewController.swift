@@ -100,7 +100,7 @@ class StackedBarChartViewController: DemoBaseViewController {
         
         let set = BarChartDataSet(values: yVals, label: "Statistics Vienna 2014")
         set.drawIconsEnabled = false
-        set.colors = [ChartColorTemplates.material()[0], ChartColorTemplates.material()[1], ChartColorTemplates.material()[2]]
+        set.colors = [CHChartColorTemplates.material()[0], CHChartColorTemplates.material()[1], CHChartColorTemplates.material()[2]]
         set.stackLabels = ["Births", "Divorces", "Marriages"]
         
         let data = BarChartData(dataSet: set)

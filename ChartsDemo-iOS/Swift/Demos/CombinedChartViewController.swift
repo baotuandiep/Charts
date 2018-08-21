@@ -79,7 +79,7 @@ class CombinedChartViewController: DemoBaseViewController {
     }
     
     func setChartData() {
-        let data = CombinedChartData()
+        let data = CHCombinedChartData()
         data.lineData = generateLineData()
         data.barData = generateBarData()
         data.bubbleData = generateBubbleData()
@@ -95,7 +95,7 @@ class CombinedChartViewController: DemoBaseViewController {
         switch option {
         case .toggleLineValues:
             for set in chartView.data!.dataSets {
-                if let set = set as? LineChartDataSet {
+                if let set = set as? CHLineChartDataSet {
                     set.drawValuesEnabled = !set .drawValuesEnabled
                     
                 }
@@ -122,11 +122,11 @@ class CombinedChartViewController: DemoBaseViewController {
     }
     
     func generateLineData() -> LineChartData {
-        let entries = (0..<ITEM_COUNT).map { (i) -> ChartDataEntry in
-            return ChartDataEntry(x: Double(i) + 0.5, y: Double(arc4random_uniform(15) + 5))
+        let entries = (0..<ITEM_COUNT).map { (i) -> CHChartDataEntry in
+            return CHChartDataEntry(x: Double(i) + 0.5, y: Double(arc4random_uniform(15) + 5))
         }
         
-        let set = LineChartDataSet(values: entries, label: "Line DataSet")
+        let set = CHLineChartDataSet(values: entries, label: "Line DataSet")
         set.setColor(UIColor(red: 240/255, green: 238/255, blue: 70/255, alpha: 1))
         set.lineWidth = 2.5
         set.setCircleColor(UIColor(red: 240/255, green: 238/255, blue: 70/255, alpha: 1))
@@ -181,12 +181,12 @@ class CombinedChartViewController: DemoBaseViewController {
     }
     
     func generateScatterData() -> ScatterChartData {
-        let entries = stride(from: 0.0, to: Double(ITEM_COUNT), by: 0.5).map { (i) -> ChartDataEntry in
-            return ChartDataEntry(x: i+0.25, y: Double(arc4random_uniform(10) + 55))
+        let entries = stride(from: 0.0, to: Double(ITEM_COUNT), by: 0.5).map { (i) -> CHChartDataEntry in
+            return CHChartDataEntry(x: i+0.25, y: Double(arc4random_uniform(10) + 55))
         }
         
-        let set = ScatterChartDataSet(values: entries, label: "Scatter DataSet")
-        set.colors = ChartColorTemplates.material()
+        let set = CHScatterChartDataSet(values: entries, label: "Scatter DataSet")
+        set.colors = CHChartColorTemplates.material()
         set.scatterShapeSize = 4.5
         set.drawValuesEnabled = false
         set.valueFont = .systemFont(ofSize: 10)
@@ -217,7 +217,7 @@ class CombinedChartViewController: DemoBaseViewController {
         }
         
         let set = BubbleChartDataSet(values: entries, label: "Bubble DataSet")
-        set.setColors(ChartColorTemplates.vordiplom(), alpha: 1)
+        set.setColors(CHChartColorTemplates.vordiplom(), alpha: 1)
         set.valueTextColor = .white
         set.valueFont = .systemFont(ofSize: 10)
         set.drawValuesEnabled = true

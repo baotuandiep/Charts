@@ -122,17 +122,17 @@
         [values addObject:[[ChartDataEntry alloc] initWithX:x y:y]];
     }
 
-    LineChartDataSet *set1 = nil;
+    CHLineChartDataSet *set1 = nil;
     if (_chartView.data.dataSetCount > 0)
     {
-        set1 = (LineChartDataSet *)_chartView.data.dataSets[0];
+        set1 = (CHLineChartDataSet *)_chartView.data.dataSets[0];
         set1.values = values;
         [_chartView.data notifyDataChanged];
         [_chartView notifyDataSetChanged];
     }
     else
     {
-        set1 = [[LineChartDataSet alloc] initWithValues:values label:@"DataSet 1"];
+        set1 = [[CHLineChartDataSet alloc] initWithValues:values label:@"DataSet 1"];
         set1.axisDependency = AxisDependencyLeft;
         set1.valueTextColor = [UIColor colorWithRed:51/255.0 green:181/255.0 blue:229/255.0 alpha:1.0];
         set1.lineWidth = 1.5;

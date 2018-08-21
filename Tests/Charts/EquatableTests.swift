@@ -12,8 +12,8 @@ class EquatableTests: XCTestCase {
     func testChartDataEntryEquality() {
         let image = UIImage()
         let data = NSObject()
-        let entry1 = ChartDataEntry(x: 5, y: 3, icon: image, data: data)
-        let entry2 = ChartDataEntry(x: 5, y: 3, icon: image, data: data)
+        let entry1 = CHChartDataEntry(x: 5, y: 3, icon: image, data: data)
+        let entry2 = CHChartDataEntry(x: 5, y: 3, icon: image, data: data)
 
         XCTAssertTrue(entry1 == entry2)
     }
@@ -22,8 +22,8 @@ class EquatableTests: XCTestCase {
         let image = UIImage()
         let data1 = NSObject()
         let data2 = NSObject()
-        let entry1 = ChartDataEntry(x: 5, y: 3, icon: image, data: data1)
-        let entry2 = ChartDataEntry(x: 5, y: 3, icon: image, data: data2)
+        let entry1 = CHChartDataEntry(x: 5, y: 3, icon: image, data: data1)
+        let entry2 = CHChartDataEntry(x: 5, y: 3, icon: image, data: data2)
 
         XCTAssertFalse(entry1 == entry2)
     }

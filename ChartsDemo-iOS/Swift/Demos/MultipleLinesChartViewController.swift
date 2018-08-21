@@ -70,15 +70,15 @@ class MultipleLinesChartViewController: DemoBaseViewController {
     
     // TODO: Refine data creation
     func setDataCount(_ count: Int, range: UInt32) {
-        let colors = ChartColorTemplates.vordiplom()[0...2]
+        let colors = CHChartColorTemplates.vordiplom()[0...2]
         
-        let block: (Int) -> ChartDataEntry = { (i) -> ChartDataEntry in
+        let block: (Int) -> CHChartDataEntry = { (i) -> CHChartDataEntry in
             let val = Double(arc4random_uniform(range) + 3)
-            return ChartDataEntry(x: Double(i), y: val)
+            return CHChartDataEntry(x: Double(i), y: val)
         }
-        let dataSets = (0..<3).map { i -> LineChartDataSet in
+        let dataSets = (0..<3).map { i -> CHLineChartDataSet in
             let yVals = (0..<count).map(block)
-            let set = LineChartDataSet(values: yVals, label: "DataSet \(i)")
+            let set = CHLineChartDataSet(values: yVals, label: "DataSet \(i)")
             set.lineWidth = 2.5
             set.circleRadius = 4
             set.circleHoleRadius = 2
@@ -90,8 +90,8 @@ class MultipleLinesChartViewController: DemoBaseViewController {
         }
         
         dataSets[0].lineDashLengths = [5, 5]
-        dataSets[0].colors = ChartColorTemplates.vordiplom()
-        dataSets[0].circleColors = ChartColorTemplates.vordiplom()
+        dataSets[0].colors = CHChartColorTemplates.vordiplom()
+        dataSets[0].circleColors = CHChartColorTemplates.vordiplom()
         
         let data = LineChartData(dataSets: dataSets)
         data.setValueFont(.systemFont(ofSize: 7, weight: .light))
@@ -101,25 +101,25 @@ class MultipleLinesChartViewController: DemoBaseViewController {
     override func optionTapped(_ option: Option) {
         switch option {
         case .toggleFilled:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.drawFilledEnabled = !set.drawFilledEnabled
             }
             chartView.setNeedsDisplay()
             
         case .toggleCircles:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.drawCirclesEnabled = !set.drawCirclesEnabled
             }
             chartView.setNeedsDisplay()
             
         case .toggleCubic:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.mode = (set.mode == .cubicBezier) ? .linear : .cubicBezier
             }
             chartView.setNeedsDisplay()
             
         case .toggleStepped:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.mode = (set.mode == .stepped) ? .linear : .stepped
             }
             chartView.setNeedsDisplay()

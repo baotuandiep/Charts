@@ -6,7 +6,7 @@ class LineChartTests: FBSnapshotTestCase
 {
     
     var chart: LineChartView!
-    var dataSet: LineChartDataSet!
+    var dataSet: CHLineChartDataSet!
     
     override func setUp()
     {
@@ -27,7 +27,7 @@ class LineChartTests: FBSnapshotTestCase
             entries.append(ChartDataEntry(x: Double(i), y: value, icon: UIImage(named: "icon", in: Bundle(for: self.classForCoder), compatibleWith: nil)))
         }
         
-        dataSet = LineChartDataSet(values: entries, label: "First unit test data")
+        dataSet = CHLineChartDataSet(values: entries, label: "First unit test data")
         dataSet.drawIconsEnabled = false
         dataSet.iconsOffset = CGPoint(x: 0, y: 20.0)
 
@@ -63,7 +63,7 @@ class LineChartTests: FBSnapshotTestCase
     
     func testIsCubic()
     {
-        dataSet.mode = LineChartDataSet.Mode.cubicBezier
+        dataSet.mode = CHLineChartDataSet.Mode.cubicBezier
         FBSnapshotVerifyView(chart, identifier: Snapshot.identifier(UIScreen.main.bounds.size), tolerance: Snapshot.tolerance)
     }
     

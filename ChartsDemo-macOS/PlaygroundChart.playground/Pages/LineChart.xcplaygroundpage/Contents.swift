@@ -93,11 +93,11 @@ for i in 0..<20 {
     yVals3.append(ChartDataEntry(x: Double(i), y: val))
 }
 
-var set1 = LineChartDataSet()
-var set2 = LineChartDataSet()
-var set3 = LineChartDataSet()
+var set1 = CHLineChartDataSet()
+var set2 = CHLineChartDataSet()
+var set3 = CHLineChartDataSet()
 
-set1 = LineChartDataSet(values: yVals1, label: "DataSet 1")
+set1 = CHLineChartDataSet(values: yVals1, label: "DataSet 1")
 set1.axisDependency = .left
 set1.colors = [#colorLiteral(red: 0.215686274509804, green: 0.709803921568627, blue: 0.898039215686275, alpha: 1.0)]
 set1.circleColors = [NSUIColor.white]
@@ -110,7 +110,7 @@ set1.highlightEnabled = true
 set1.drawCircleHoleEnabled = false
 
 
-set2 = LineChartDataSet(values: yVals2, label: "DataSet 2")
+set2 = CHLineChartDataSet(values: yVals2, label: "DataSet 2")
 set2.axisDependency = .right
 set2.colors = [NSUIColor.red]
 set2.circleColors = [NSUIColor.white]
@@ -122,7 +122,7 @@ set2.highlightColor = NSUIColor.red
 set2.highlightEnabled = true
 set2.drawCircleHoleEnabled = false
 
-set3 = LineChartDataSet(values: yVals3, label: "DataSet 3")
+set3 = CHLineChartDataSet(values: yVals3, label: "DataSet 3")
 set3.axisDependency = .right
 set3.colors = [NSUIColor.green]
 set3.circleColors = [NSUIColor.white]
@@ -134,7 +134,7 @@ set3.highlightColor = NSUIColor.green
 set3.highlightEnabled = true
 set3.drawCircleHoleEnabled = false
 
-var dataSets = [LineChartDataSet]()
+var dataSets = [CHLineChartDataSet]()
 dataSets.append(set1)
 dataSets.append(set2)
 dataSets.append(set3)

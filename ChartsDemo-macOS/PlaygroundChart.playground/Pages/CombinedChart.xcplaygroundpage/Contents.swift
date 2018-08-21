@@ -23,7 +23,7 @@ import PlaygroundSupport
 
 func setChartData()
 {
-    let data = CombinedChartData()
+    let data = CHCombinedChartData()
     data.lineData = generateLineData()
     data.barData = generateBarData()
     chartView.xAxis.axisMaximum = data.xMax + 0.25
@@ -39,7 +39,7 @@ func generateLineData() -> LineChartData
         entries.append(ChartDataEntry(x: Double(index) + 0.5, y: (Double(arc4random_uniform(15) + 5))))
     }
 //: ### LineChartDataSet
-    let set = LineChartDataSet(values: entries, label: "Line DataSet")
+    let set = CHLineChartDataSet(values: entries, label: "Line DataSet")
     set.colors = [#colorLiteral(red: 0.941176470588235, green: 0.933333333333333, blue: 0.274509803921569, alpha: 1.0)]
     set.lineWidth = 2.5
     set.circleColors = [#colorLiteral(red: 0.941176470588235, green: 0.933333333333333, blue: 0.274509803921569, alpha: 1.0)]

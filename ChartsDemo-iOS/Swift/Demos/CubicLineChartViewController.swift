@@ -10,7 +10,7 @@ import UIKit
 import Charts
 
 private class CubicLineSampleFillFormatter: IFillFormatter {
-    func getFillLinePosition(dataSet: ILineChartDataSet, dataProvider: LineChartDataProvider) -> CGFloat {
+    func getFillLinePosition(dataSet: ILineChartDataSet, dataProvider: CHLineChartDataProvider) -> CGFloat {
         return -10
     }
 }
@@ -83,13 +83,13 @@ class CubicLineChartViewController: DemoBaseViewController {
     }
     
     func setDataCount(_ count: Int, range: UInt32) {
-        let yVals1 = (0..<count).map { (i) -> ChartDataEntry in
+        let yVals1 = (0..<count).map { (i) -> CHChartDataEntry in
             let mult = range + 1
             let val = Double(arc4random_uniform(mult) + 20)
-            return ChartDataEntry(x: Double(i), y: val)
+            return CHChartDataEntry(x: Double(i), y: val)
         }
 
-        let set1 = LineChartDataSet(values: yVals1, label: "DataSet 1")
+        let set1 = CHLineChartDataSet(values: yVals1, label: "DataSet 1")
         set1.mode = .cubicBezier
         set1.drawCirclesEnabled = false
         set1.lineWidth = 1.8
@@ -111,31 +111,31 @@ class CubicLineChartViewController: DemoBaseViewController {
     override func optionTapped(_ option: Option) {
         switch option {
         case .toggleFilled:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.drawFilledEnabled = !set.drawFilledEnabled
             }
             chartView.setNeedsDisplay()
             
         case .toggleCircles:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.drawCirclesEnabled = !set.drawCirclesEnabled
             }
             chartView.setNeedsDisplay()
 
         case .toggleCubic:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.mode = (set.mode == .cubicBezier) ? .linear : .cubicBezier
             }
             chartView.setNeedsDisplay()
             
         case .toggleStepped:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.mode = (set.mode == .stepped) ? .linear : .stepped
             }
             chartView.setNeedsDisplay()
 
         case .toggleHorizontalCubic:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.mode = (set.mode == .cubicBezier) ? .horizontalBezier : .cubicBezier
             }
             chartView.setNeedsDisplay()

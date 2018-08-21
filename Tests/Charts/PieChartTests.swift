@@ -6,7 +6,7 @@ class PieChartTests: FBSnapshotTestCase
 {
     
     var chart: PieChartView!
-    var dataSet: PieChartDataSet!
+    var dataSet: CHPieChartDataSet!
     
     override func setUp()
     {
@@ -18,14 +18,14 @@ class PieChartTests: FBSnapshotTestCase
         // Sample data
         let values: [Double] = [11, 33, 81, 52, 97, 101, 75]
         
-        var entries: [PieChartDataEntry] = Array()
+        var entries: [CHPieChartDataEntry] = Array()
         
         for value in values
         {
-            entries.append(PieChartDataEntry(value: value, icon: UIImage(named: "icon", in: Bundle(for: self.classForCoder), compatibleWith: nil)))
+            entries.append(CHPieChartDataEntry(value: value, icon: UIImage(named: "icon", in: Bundle(for: self.classForCoder), compatibleWith: nil)))
         }
         
-        dataSet = PieChartDataSet(values: entries, label: "First unit test data")
+        dataSet = CHPieChartDataSet(values: entries, label: "First unit test data")
         dataSet.drawIconsEnabled = false
         dataSet.iconsOffset = CGPoint(x: 0, y: 20.0)
         
@@ -39,7 +39,7 @@ class PieChartTests: FBSnapshotTestCase
         chart = PieChartView(frame: CGRect(x: 0, y: 0, width: 480, height: 350))
         chart.backgroundColor = NSUIColor.clear
         chart.centerText = "PieChart Unit Test"
-        chart.data = PieChartData(dataSet: dataSet)
+        chart.data = CHPieChartData(dataSet: dataSet)
     }
     
     override func tearDown()

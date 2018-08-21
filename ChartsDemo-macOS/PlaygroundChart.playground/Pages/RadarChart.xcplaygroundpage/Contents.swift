@@ -61,15 +61,15 @@ let mult = 80.0
 let min = 20.0
 let cnt = 5
 
-var entries1 = [RadarChartDataEntry]()
-var entries2 = [RadarChartDataEntry]()
+var entries1 = [CHRadarChartDataEntry]()
+var entries2 = [CHRadarChartDataEntry]()
 /*:
 - Note: The order of the entries when being added to the entries array determines their position around the center of the chart.
 */
 for _ in 0..<cnt
 {
-    entries1.append(RadarChartDataEntry(value: (Double(arc4random_uniform(UInt32(mult))) + min)))
-    entries2.append(RadarChartDataEntry(value: (Double(arc4random_uniform(UInt32(mult))) + min)))
+    entries1.append(CHRadarChartDataEntry(value: (Double(arc4random_uniform(UInt32(mult))) + min)))
+    entries2.append(CHRadarChartDataEntry(value: (Double(arc4random_uniform(UInt32(mult))) + min)))
 }
 //: ### RadarChartDataSet
 let set1 = RadarChartDataSet(values: entries1, label: "Last Week")
@@ -90,7 +90,7 @@ set2.lineWidth = 2.0
 set2.drawHighlightCircleEnabled = true
 set2.setDrawHighlightIndicators(false)
 //: ### RadarChartData
-let data = RadarChartData(dataSets: [set1, set2])
+let data = CHRadarChartData(dataSets: [set1, set2])
 data.setValueFont ( NSUIFont(name: "HelveticaNeue-Light", size: CGFloat(8.0)))
 data.setDrawValues ( false )
 data.setValueTextColor(  NSUIColor.white)

@@ -180,7 +180,7 @@ open class BalloonMarker: MarkerImage
         context.restoreGState()
     }
     
-    open override func refreshContent(entry: ChartDataEntry, highlight: Highlight)
+    open override func refreshContent(entry: CHChartDataEntry, highlight: Highlight)
     {
         setLabel(String(entry.y))
     }

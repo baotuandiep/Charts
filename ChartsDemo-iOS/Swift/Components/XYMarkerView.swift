@@ -21,7 +21,7 @@ public class XYMarkerView: BalloonMarker {
         super.init(color: color, font: font, textColor: textColor, insets: insets)
     }
     
-    public override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
+    public override func refreshContent(entry: CHChartDataEntry, highlight: Highlight) {
         let string = "x: "
             + xAxisValueFormatter.stringForValue(entry.x, axis: XAxis())
             + ", y: "

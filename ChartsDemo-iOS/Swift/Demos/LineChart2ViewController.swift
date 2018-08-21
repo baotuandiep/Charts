@@ -88,21 +88,21 @@ class LineChart2ViewController: DemoBaseViewController {
     }
     
     func setDataCount(_ count: Int, range: UInt32) {
-        let yVals1 = (0..<count).map { (i) -> ChartDataEntry in
+        let yVals1 = (0..<count).map { (i) -> CHChartDataEntry in
             let mult = range / 2
             let val = Double(arc4random_uniform(mult) + 50)
-            return ChartDataEntry(x: Double(i), y: val)
+            return CHChartDataEntry(x: Double(i), y: val)
         }
-        let yVals2 = (0..<count).map { (i) -> ChartDataEntry in
+        let yVals2 = (0..<count).map { (i) -> CHChartDataEntry in
             let val = Double(arc4random_uniform(range) + 450)
-            return ChartDataEntry(x: Double(i), y: val)
+            return CHChartDataEntry(x: Double(i), y: val)
         }
-        let yVals3 = (0..<count).map { (i) -> ChartDataEntry in
+        let yVals3 = (0..<count).map { (i) -> CHChartDataEntry in
             let val = Double(arc4random_uniform(range) + 500)
-            return ChartDataEntry(x: Double(i), y: val)
+            return CHChartDataEntry(x: Double(i), y: val)
         }
 
-        let set1 = LineChartDataSet(values: yVals1, label: "DataSet 1")
+        let set1 = CHLineChartDataSet(values: yVals1, label: "DataSet 1")
         set1.axisDependency = .left
         set1.setColor(UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1))
         set1.setCircleColor(.white)
@@ -113,7 +113,7 @@ class LineChart2ViewController: DemoBaseViewController {
         set1.highlightColor = UIColor(red: 244/255, green: 117/255, blue: 117/255, alpha: 1)
         set1.drawCircleHoleEnabled = false
         
-        let set2 = LineChartDataSet(values: yVals2, label: "DataSet 2")
+        let set2 = CHLineChartDataSet(values: yVals2, label: "DataSet 2")
         set2.axisDependency = .right
         set2.setColor(.red)
         set2.setCircleColor(.white)
@@ -124,7 +124,7 @@ class LineChart2ViewController: DemoBaseViewController {
         set2.highlightColor = UIColor(red: 244/255, green: 117/255, blue: 117/255, alpha: 1)
         set2.drawCircleHoleEnabled = false
 
-        let set3 = LineChartDataSet(values: yVals3, label: "DataSet 3")
+        let set3 = CHLineChartDataSet(values: yVals3, label: "DataSet 3")
         set3.axisDependency = .right
         set3.setColor(.yellow)
         set3.setCircleColor(.white)
@@ -145,31 +145,31 @@ class LineChart2ViewController: DemoBaseViewController {
     override func optionTapped(_ option: Option) {
         switch option {
         case .toggleFilled:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.drawFilledEnabled = !set.drawFilledEnabled
             }
             chartView.setNeedsDisplay()
             
         case .toggleCircles:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.drawCirclesEnabled = !set.drawCirclesEnabled
             }
             chartView.setNeedsDisplay()
             
         case .toggleCubic:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.mode = (set.mode == .cubicBezier) ? .linear : .cubicBezier
             }
             chartView.setNeedsDisplay()
             
         case .toggleStepped:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.mode = (set.mode == .stepped) ? .linear : .stepped
             }
             chartView.setNeedsDisplay()
             
         case .toggleHorizontalCubic:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.mode = (set.mode == .cubicBezier) ? .horizontalBezier : .cubicBezier
             }
             chartView.setNeedsDisplay()

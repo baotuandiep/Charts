@@ -108,12 +108,12 @@ class LineChart1ViewController: DemoBaseViewController {
     }
 
     func setDataCount(_ count: Int, range: UInt32) {
-        let values = (0..<count).map { (i) -> ChartDataEntry in
+        let values = (0..<count).map { (i) -> CHChartDataEntry in
             let val = Double(arc4random_uniform(range) + 3)
-            return ChartDataEntry(x: Double(i), y: val, icon: #imageLiteral(resourceName: "icon"))
+            return CHChartDataEntry(x: Double(i), y: val, icon: #imageLiteral(resourceName: "icon"))
         }
         
-        let set1 = LineChartDataSet(values: values, label: "DataSet 1")
+        let set1 = CHLineChartDataSet(values: values, label: "DataSet 1")
         set1.drawIconsEnabled = false
         
         set1.lineDashLengths = [5, 2.5]
@@ -128,12 +128,12 @@ class LineChart1ViewController: DemoBaseViewController {
         set1.formLineWidth = 1
         set1.formSize = 15
         
-        let gradientColors = [ChartColorTemplates.colorFromString("#00ff0000").cgColor,
-                              ChartColorTemplates.colorFromString("#ffff0000").cgColor]
+        let gradientColors = [CHChartColorTemplates.colorFromString("#00ff0000").cgColor,
+                              CHChartColorTemplates.colorFromString("#ffff0000").cgColor]
         let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
         
         set1.fillAlpha = 1
-        set1.fill = Fill(linearGradient: gradient, angle: 90) //.linearGradient(gradient, angle: 90)
+        set1.fill = CHFill(linearGradient: gradient, angle: 90) //.linearGradient(gradient, angle: 90)
         set1.drawFilledEnabled = true
         
         let data = LineChartData(dataSet: set1)
@@ -144,31 +144,31 @@ class LineChart1ViewController: DemoBaseViewController {
     override func optionTapped(_ option: Option) {
         switch option {
         case .toggleFilled:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.drawFilledEnabled = !set.drawFilledEnabled
             }
             chartView.setNeedsDisplay()
             
         case .toggleCircles:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.drawCirclesEnabled = !set.drawCirclesEnabled
             }
             chartView.setNeedsDisplay()
             
         case .toggleCubic:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.mode = (set.mode == .cubicBezier) ? .linear : .cubicBezier
             }
             chartView.setNeedsDisplay()
             
         case .toggleStepped:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.mode = (set.mode == .stepped) ? .linear : .stepped
             }
             chartView.setNeedsDisplay()
             
         case .toggleHorizontalCubic:
-            for set in chartView.data!.dataSets as! [LineChartDataSet] {
+            for set in chartView.data!.dataSets as! [CHLineChartDataSet] {
                 set.mode = (set.mode == .cubicBezier) ? .horizontalBezier : .cubicBezier
             }
             chartView.setNeedsDisplay()

@@ -12,7 +12,7 @@ import FBSnapshotTestCase
 class CombinedChartTests: FBSnapshotTestCase
 {
     var chart: CombinedChartView!
-    var lineDataSet: LineChartDataSet!
+    var lineDataSet: CHLineChartDataSet!
     var barDataSet: BarChartDataSet!
 
     override func setUp()
@@ -23,7 +23,7 @@ class CombinedChartTests: FBSnapshotTestCase
         self.recordMode = false
 
         // Sample data
-        let combinedData = CombinedChartData()
+        let combinedData = CHCombinedChartData()
         combinedData.barData = generateBarData()
         combinedData.lineData = generateLineData()
         chart = CombinedChartView(frame: CGRect(x: 0, y: 0, width: 480, height: 350))
@@ -67,7 +67,7 @@ class CombinedChartTests: FBSnapshotTestCase
             entries.append(ChartDataEntry(x: Double(i), y: value, icon: UIImage(named: "icon", in: Bundle(for: self.classForCoder), compatibleWith: nil)))
         }
 
-        lineDataSet = LineChartDataSet(values: entries, label: "Line chart unit test data")
+        lineDataSet = CHLineChartDataSet(values: entries, label: "Line chart unit test data")
         lineDataSet.drawIconsEnabled = false
         return LineChartData(dataSet: lineDataSet)
     }

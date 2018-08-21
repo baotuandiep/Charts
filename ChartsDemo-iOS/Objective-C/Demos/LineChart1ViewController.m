@@ -141,17 +141,17 @@
         [values addObject:[[ChartDataEntry alloc] initWithX:i y:val icon: [UIImage imageNamed:@"icon"]]];
     }
     
-    LineChartDataSet *set1 = nil;
+    CHLineChartDataSet *set1 = nil;
     if (_chartView.data.dataSetCount > 0)
     {
-        set1 = (LineChartDataSet *)_chartView.data.dataSets[0];
+        set1 = (CHLineChartDataSet *)_chartView.data.dataSets[0];
         set1.values = values;
         [_chartView.data notifyDataChanged];
         [_chartView notifyDataSetChanged];
     }
     else
     {
-        set1 = [[LineChartDataSet alloc] initWithValues:values label:@"DataSet 1"];
+        set1 = [[CHLineChartDataSet alloc] initWithValues:values label:@"DataSet 1"];
         
         set1.drawIconsEnabled = NO;
         
@@ -168,8 +168,8 @@
         set1.formSize = 15.0;
         
         NSArray *gradientColors = @[
-                                    (id)[ChartColorTemplates colorFromString:@"#00ff0000"].CGColor,
-                                    (id)[ChartColorTemplates colorFromString:@"#ffff0000"].CGColor
+                                    (id)[CHChartColorTemplates colorFromString:@"#00ff0000"].CGColor,
+                                    (id)[CHChartColorTemplates colorFromString:@"#ffff0000"].CGColor
                                     ];
         CGGradientRef gradient = CGGradientCreateWithColors(nil, (CFArrayRef)gradientColors, nil);
         

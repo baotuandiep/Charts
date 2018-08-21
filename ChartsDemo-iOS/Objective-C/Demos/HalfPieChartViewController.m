@@ -98,16 +98,16 @@
     // IMPORTANT: In a PieChart, no values (Entry) should have the same xIndex (even if from different DataSets), since no values can be drawn above each other.
     for (int i = 0; i < count; i++)
     {
-        [values addObject:[[PieChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + mult / 5) label:parties[i % parties.count]]];
+        [values addObject:[[CHPieChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + mult / 5) label:parties[i % parties.count]]];
     }
     
-    PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:@"Election Results"];
+    CHPieChartDataSet *dataSet = [[CHPieChartDataSet alloc] initWithValues:values label:@"Election Results"];
     dataSet.sliceSpace = 3.0;
     dataSet.selectionShift = 5.0;
     
-    dataSet.colors = ChartColorTemplates.material;
+    dataSet.colors = CHChartColorTemplates.material;
     
-    PieChartData *data = [[PieChartData alloc] initWithDataSet:dataSet];
+    CHPieChartData *data = [[CHPieChartData alloc] initWithDataSet:dataSet];
     
     NSNumberFormatter *pFormatter = [[NSNumberFormatter alloc] init];
     pFormatter.numberStyle = NSNumberFormatterPercentStyle;

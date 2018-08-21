@@ -147,8 +147,8 @@
     // NOTE: The order of the entries when being added to the entries array determines their position around the center of the chart.
     for (int i = 0; i < cnt; i++)
     {
-        [entries1 addObject:[[RadarChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + min)]];
-        [entries2 addObject:[[RadarChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + min)]];
+        [entries1 addObject:[[CHRadarChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + min)]];
+        [entries2 addObject:[[CHRadarChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + min)]];
     }
     
     RadarChartDataSet *set1 = [[RadarChartDataSet alloc] initWithValues:entries1 label:@"Last Week"];
@@ -169,7 +169,7 @@
     set2.drawHighlightCircleEnabled = YES;
     [set2 setDrawHighlightIndicators:NO];
     
-    RadarChartData *data = [[RadarChartData alloc] initWithDataSets:@[set1, set2]];
+    CHRadarChartData *data = [[CHRadarChartData alloc] initWithDataSets:@[set1, set2]];
     [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:8.f]];
     [data setDrawValues:NO];
     data.valueTextColor = UIColor.whiteColor;

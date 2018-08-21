@@ -106,7 +106,7 @@
 
 - (void)setChartData
 {
-    CombinedChartData *data = [[CombinedChartData alloc] init];
+    CHCombinedChartData *data = [[CHCombinedChartData alloc] init];
     data.lineData = [self generateLineData];
     data.barData = [self generateBarData];
     data.bubbleData = [self generateBubbleData];
@@ -124,7 +124,7 @@
     {
         for (NSObject<IChartDataSet> *set in _chartView.data.dataSets)
         {
-            if ([set isKindOfClass:LineChartDataSet.class])
+            if ([set isKindOfClass:CHLineChartDataSet.class])
             {
                 set.drawValuesEnabled = !set.isDrawValuesEnabled;
             }
@@ -170,7 +170,7 @@
         [entries addObject:[[ChartDataEntry alloc] initWithX:index + 0.5 y:(arc4random_uniform(15) + 5)]];
     }
     
-    LineChartDataSet *set = [[LineChartDataSet alloc] initWithValues:entries label:@"Line DataSet"];
+    CHLineChartDataSet *set = [[CHLineChartDataSet alloc] initWithValues:entries label:@"Line DataSet"];
     [set setColor:[UIColor colorWithRed:240/255.f green:238/255.f blue:70/255.f alpha:1.f]];
     set.lineWidth = 2.5;
     [set setCircleColor:[UIColor colorWithRed:240/255.f green:238/255.f blue:70/255.f alpha:1.f]];
@@ -243,8 +243,8 @@
         [entries addObject:[[ChartDataEntry alloc] initWithX:index + 0.25 y:(arc4random_uniform(10) + 55)]];
     }
     
-    ScatterChartDataSet *set = [[ScatterChartDataSet alloc] initWithValues:entries label:@"Scatter DataSet"];
-    set.colors = ChartColorTemplates.material;
+    CHScatterChartDataSet *set = [[CHScatterChartDataSet alloc] initWithValues:entries label:@"Scatter DataSet"];
+    set.colors = CHChartColorTemplates.material;
     set.scatterShapeSize = 4.5;
     [set setDrawValuesEnabled:NO];
     set.valueFont = [UIFont systemFontOfSize:10.f];

@@ -120,7 +120,7 @@ class RadarChartViewController: DemoBaseViewController {
         let min: UInt32 = 20
         let cnt = 5
         
-        let block: (Int) -> RadarChartDataEntry = { _ in return RadarChartDataEntry(value: Double(arc4random_uniform(mult) + min))}
+        let block: (Int) -> CHRadarChartDataEntry = { _ in return CHRadarChartDataEntry(value: Double(arc4random_uniform(mult) + min))}
         let entries1 = (0..<cnt).map(block)
         let entries2 = (0..<cnt).map(block)
         
@@ -142,7 +142,7 @@ class RadarChartViewController: DemoBaseViewController {
         set2.drawHighlightCircleEnabled = true
         set2.setDrawHighlightIndicators(false)
         
-        let data = RadarChartData(dataSets: [set1, set2])
+        let data = CHRadarChartData(dataSets: [set1, set2])
         data.setValueFont(.systemFont(ofSize: 8, weight: .light))
         data.setDrawValues(false)
         data.setValueTextColor(.white)

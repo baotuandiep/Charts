@@ -59,9 +59,9 @@ open class LargeValueFormatter: NSObject, IValueFormatter, IAxisValueFormatter
     
     open func stringForValue(
         _ value: Double,
-        entry: ChartDataEntry,
+        entry: CHChartDataEntry,
         dataSetIndex: Int,
-        viewPortHandler: ViewPortHandler?) -> String
+        viewPortHandler: CHViewPortHandler?) -> String
     {
         return format(value: value)
     }

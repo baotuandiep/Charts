@@ -92,7 +92,7 @@
 
 - (void)setDataCount:(int)count range:(double)range
 {
-    NSArray *colors = @[ChartColorTemplates.vordiplom[0], ChartColorTemplates.vordiplom[1], ChartColorTemplates.vordiplom[2]];
+    NSArray *colors = @[CHChartColorTemplates.vordiplom[0], CHChartColorTemplates.vordiplom[1], CHChartColorTemplates.vordiplom[2]];
     
     NSMutableArray *dataSets = [[NSMutableArray alloc] init];
     
@@ -106,7 +106,7 @@
             [values addObject:[[ChartDataEntry alloc] initWithX:i y:val]];
         }
         
-        LineChartDataSet *d = [[LineChartDataSet alloc] initWithValues:values label:[NSString stringWithFormat:@"DataSet %d", z + 1]];
+        CHLineChartDataSet *d = [[CHLineChartDataSet alloc] initWithValues:values label:[NSString stringWithFormat:@"DataSet %d", z + 1]];
         d.lineWidth = 2.5;
         d.circleRadius = 4.0;
         d.circleHoleRadius = 2.0;
@@ -117,9 +117,9 @@
         [dataSets addObject:d];
     }
     
-    ((LineChartDataSet *)dataSets[0]).lineDashLengths = @[@5.f, @5.f];
-    ((LineChartDataSet *)dataSets[0]).colors = ChartColorTemplates.vordiplom;
-    ((LineChartDataSet *)dataSets[0]).circleColors = ChartColorTemplates.vordiplom;
+    ((CHLineChartDataSet *)dataSets[0]).lineDashLengths = @[@5.f, @5.f];
+    ((CHLineChartDataSet *)dataSets[0]).colors = CHChartColorTemplates.vordiplom;
+    ((CHLineChartDataSet *)dataSets[0]).circleColors = CHChartColorTemplates.vordiplom;
     
     LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
     [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:7.f]];

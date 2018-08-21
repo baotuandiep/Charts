@@ -39,10 +39,10 @@ chartView.chartDescription?.text = "Pie Chart"
 let ys1 = Array(1..<10).map { x in return sin(Double(x) / 2.0 / 3.141 * 1.5) * 100.0 }
 let yse1 = ys1.enumerated().map { x, y in return PieChartDataEntry(value: y, label: String(x)) }
 //: ### PieChartDataSet
-let ds1 = PieChartDataSet(values: yse1, label: "Hello")
+let ds1 = CHPieChartDataSet(values: yse1, label: "Hello")
 ds1.colors = ChartColorTemplates.vordiplom()
 //: ### PieChartData
-let data = PieChartData()
+let data = CHPieChartData()
 data.addDataSet(ds1)
 chartView.data = data
 
