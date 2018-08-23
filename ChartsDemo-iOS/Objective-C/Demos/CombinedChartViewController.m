@@ -191,15 +191,15 @@
 
 - (BarChartData *)generateBarData
 {
-    NSMutableArray<BarChartDataEntry *> *entries1 = [[NSMutableArray alloc] init];
-    NSMutableArray<BarChartDataEntry *> *entries2 = [[NSMutableArray alloc] init];
+    NSMutableArray<CHBarChartDataEntry *> *entries1 = [[NSMutableArray alloc] init];
+    NSMutableArray<CHBarChartDataEntry *> *entries2 = [[NSMutableArray alloc] init];
     
     for (int index = 0; index < ITEM_COUNT; index++)
     {
-        [entries1 addObject:[[BarChartDataEntry alloc] initWithX:0.0 y:(arc4random_uniform(25) + 25)]];
+        [entries1 addObject:[[CHBarChartDataEntry alloc] initWithX:0.0 y:(arc4random_uniform(25) + 25)]];
         
         // stacked
-        [entries2 addObject:[[BarChartDataEntry alloc] initWithX:0.0 yValues:@[@(arc4random_uniform(13) + 12), @(arc4random_uniform(13) + 12)]]];
+        [entries2 addObject:[[CHBarChartDataEntry alloc] initWithX:0.0 yValues:@[@(arc4random_uniform(13) + 12), @(arc4random_uniform(13) + 12)]]];
     }
 
     BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithValues:entries1 label:@"Bar 1"];

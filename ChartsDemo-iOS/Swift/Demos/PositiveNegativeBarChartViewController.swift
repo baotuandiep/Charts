@@ -80,11 +80,11 @@ class PositiveNegativeBarChartViewController: DemoBaseViewController {
     }
     
     func setChartData() {
-        let yVals = [BarChartDataEntry(x: 0, y: -224.1),
-                     BarChartDataEntry(x: 1, y: 238.5),
-                     BarChartDataEntry(x: 2, y: 1280.1),
-                     BarChartDataEntry(x: 3, y: -442.3),
-                     BarChartDataEntry(x: 4, y: -2280.1)
+        let yVals = [CHBarChartDataEntry(x: 0, y: -224.1),
+                     CHBarChartDataEntry(x: 1, y: 238.5),
+                     CHBarChartDataEntry(x: 2, y: 1280.1),
+                     CHBarChartDataEntry(x: 3, y: -442.3),
+                     CHBarChartDataEntry(x: 4, y: -2280.1)
         ]
         
         let red = UIColor(red: 211/255, green: 74/255, blue: 88/255, alpha: 1)

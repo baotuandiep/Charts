@@ -86,7 +86,7 @@ open class CHHorizontalBarChartRenderer: CHBarChartRenderer
         
         for i in stride(from: 0, to: min(Int(ceil(Double(dataSet.entryCount) * animator.phaseX)), dataSet.entryCount), by: 1)
         {
-            guard let e = dataSet.entryForIndex(i) as? BarChartDataEntry else { continue }
+            guard let e = dataSet.entryForIndex(i) as? CHBarChartDataEntry else { continue }
             
             let vals = e.yValues
             
@@ -205,7 +205,7 @@ open class CHHorizontalBarChartRenderer: CHBarChartRenderer
             
             for i in stride(from: 0, to: min(Int(ceil(Double(dataSet.entryCount) * animator.phaseX)), dataSet.entryCount), by: 1)
             {
-                guard let e = dataSet.entryForIndex(i) as? BarChartDataEntry else { continue }
+                guard let e = dataSet.entryForIndex(i) as? CHBarChartDataEntry else { continue }
                 
                 x = e.x
                 
@@ -362,7 +362,7 @@ open class CHHorizontalBarChartRenderer: CHBarChartRenderer
                 {
                     for j in 0 ..< Int(ceil(Double(dataSet.entryCount) * animator.phaseX))
                     {
-                        guard let e = dataSet.entryForIndex(j) as? BarChartDataEntry else { continue }
+                        guard let e = dataSet.entryForIndex(j) as? CHBarChartDataEntry else { continue }
                         
                         let rect = buffer.rects[j]
                         
@@ -440,7 +440,7 @@ open class CHHorizontalBarChartRenderer: CHBarChartRenderer
                     
                     for index in 0 ..< Int(ceil(Double(dataSet.entryCount) * animator.phaseX))
                     {
-                        guard let e = dataSet.entryForIndex(index) as? BarChartDataEntry else { continue }
+                        guard let e = dataSet.entryForIndex(index) as? CHBarChartDataEntry else { continue }
                         
                         let rect = buffer.rects[bufferIndex]
                         

@@ -111,7 +111,7 @@
     
     for (int i = 0; i < count; i++)
     {
-        [entries addObject:[[BarChartDataEntry alloc] initWithX:(double)i y:sinf(M_PI * (i % 128) / 64.0)]];
+        [entries addObject:[[CHBarChartDataEntry alloc] initWithX:(double)i y:sinf(M_PI * (i % 128) / 64.0)]];
     }
     
     BarChartDataSet *set = nil;

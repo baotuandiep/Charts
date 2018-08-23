@@ -164,7 +164,7 @@ open class CHHorizontalBarChartView: CHBarChartView
         return CGPoint(x: highlight.drawY, y: highlight.drawX)
     }
     
-    open override func getBarBounds(entry e: BarChartDataEntry) -> CGRect
+    open override func getBarBounds(entry e: CHBarChartDataEntry) -> CGRect
     {
         guard
             let data = _data as? CHBarChartData,

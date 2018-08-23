@@ -89,13 +89,13 @@ class StackedBarChartViewController: DemoBaseViewController {
     }
     
     func setChartData(count: Int, range: UInt32) {
-        let yVals = (0..<count).map { (i) -> BarChartDataEntry in
+        let yVals = (0..<count).map { (i) -> CHBarChartDataEntry in
             let mult = range + 1
             let val1 = Double(arc4random_uniform(mult) + mult / 3)
             let val2 = Double(arc4random_uniform(mult) + mult / 3)
             let val3 = Double(arc4random_uniform(mult) + mult / 3)
             
-            return BarChartDataEntry(x: Double(i), yValues: [val1, val2, val3], icon: #imageLiteral(resourceName: "icon"))
+            return CHBarChartDataEntry(x: Double(i), yValues: [val1, val2, val3], icon: #imageLiteral(resourceName: "icon"))
         }
         
         let set = BarChartDataSet(values: yVals, label: "Statistics Vienna 2014")

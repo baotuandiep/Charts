@@ -126,7 +126,7 @@
                                             @"xLabel": @"01-02"},
                                           ];
     
-    NSMutableArray<BarChartDataEntry *> *values = [[NSMutableArray alloc] init];
+    NSMutableArray<CHBarChartDataEntry *> *values = [[NSMutableArray alloc] init];
     NSMutableArray<UIColor *> *colors = [[NSMutableArray alloc] init];
     
     UIColor *green = [UIColor colorWithRed:110/255.f green:190/255.f blue:102/255.f alpha:1.f];
@@ -135,7 +135,7 @@
     for (int i = 0; i < dataList.count; i++)
     {
         NSDictionary *d = dataList[i];
-        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:[d[@"xValue"] doubleValue] y:[d[@"yValue"] doubleValue]];
+        CHBarChartDataEntry *entry = [[CHBarChartDataEntry alloc] initWithX:[d[@"xValue"] doubleValue] y:[d[@"yValue"] doubleValue]];
         [values addObject:entry];
         
         // specific colors

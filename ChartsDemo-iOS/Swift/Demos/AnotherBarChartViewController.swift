@@ -61,10 +61,10 @@ class AnotherBarChartViewController: DemoBaseViewController {
     }
     
     func setDataCount(_ count: Int, range: Double) {
-        let yVals = (0..<count).map { (i) -> BarChartDataEntry in
+        let yVals = (0..<count).map { (i) -> CHBarChartDataEntry in
             let mult = range + 1
             let val = Double(arc4random_uniform(UInt32(mult))) + mult/3
-            return BarChartDataEntry(x: Double(i), y: val)
+            return CHBarChartDataEntry(x: Double(i), y: val)
         }
         
         var set1: BarChartDataSet! = nil

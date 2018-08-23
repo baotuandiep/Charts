@@ -111,7 +111,7 @@ open class CHBarChartRenderer: CHBarLineScatterCandleBubbleRenderer
         
         for i in stride(from: 0, to: min(Int(ceil(Double(dataSet.entryCount) * animator.phaseX)), dataSet.entryCount), by: 1)
         {
-            guard let e = dataSet.entryForIndex(i) as? BarChartDataEntry else { continue }
+            guard let e = dataSet.entryForIndex(i) as? CHBarChartDataEntry else { continue }
             
             let vals = e.yValues
 
@@ -287,7 +287,7 @@ open class CHBarChartRenderer: CHBarLineScatterCandleBubbleRenderer
             
             for i in stride(from: 0, to: min(Int(ceil(Double(dataSet.entryCount) * animator.phaseX)), dataSet.entryCount), by: 1)
             {
-                guard let e = dataSet.entryForIndex(i) as? BarChartDataEntry else { continue }
+                guard let e = dataSet.entryForIndex(i) as? CHBarChartDataEntry else { continue }
                 
                 x = e.x
                 
@@ -473,7 +473,7 @@ open class CHBarChartRenderer: CHBarLineScatterCandleBubbleRenderer
                 {
                     for j in 0 ..< Int(ceil(Double(dataSet.entryCount) * animator.phaseX))
                     {
-                        guard let e = dataSet.entryForIndex(j) as? BarChartDataEntry else { continue }
+                        guard let e = dataSet.entryForIndex(j) as? CHBarChartDataEntry else { continue }
                         
                         let rect = buffer.rects[j]
                         
@@ -537,7 +537,7 @@ open class CHBarChartRenderer: CHBarLineScatterCandleBubbleRenderer
                     
                     for index in 0 ..< Int(ceil(Double(dataSet.entryCount) * animator.phaseX))
                     {
-                        guard let e = dataSet.entryForIndex(index) as? BarChartDataEntry else { continue }
+                        guard let e = dataSet.entryForIndex(index) as? CHBarChartDataEntry else { continue }
                         
                         let vals = e.yValues
                         
@@ -709,7 +709,7 @@ open class CHBarChartRenderer: CHBarLineScatterCandleBubbleRenderer
                 set.isHighlightEnabled
                 else { continue }
             
-            if let e = set.entryForXValue(high.x, closestToY: high.y) as? BarChartDataEntry
+            if let e = set.entryForXValue(high.x, closestToY: high.y) as? CHBarChartDataEntry
             {
                 if !isInBoundsX(entry: e, dataSet: set)
                 {
@@ -790,7 +790,7 @@ open class CHBarChartRenderer: CHBarLineScatterCandleBubbleRenderer
         let element = NSUIAccessibilityElement(accessibilityContainer: container)
         let xAxis = container.xAxis
 
-        guard let e = dataSet.entryForIndex(idx/stackSize) as? BarChartDataEntry else { return element }
+        guard let e = dataSet.entryForIndex(idx/stackSize) as? CHBarChartDataEntry else { return element }
         guard let dataProvider = dataProvider else { return element }
 
         // NOTE: The formatter can cause issues when the x-axis labels are consecutive ints.

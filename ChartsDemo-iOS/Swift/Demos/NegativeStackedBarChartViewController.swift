@@ -90,17 +90,17 @@ class NegativeStackedBarChartViewController: DemoBaseViewController {
     }
     
     func setChartData() {
-        let yVals = [BarChartDataEntry(x: 5, yValues: [-10, 10]),
-                     BarChartDataEntry(x: 15, yValues: [-12, 13]),
-                     BarChartDataEntry(x: 25, yValues: [-15, 15]),
-                     BarChartDataEntry(x: 35, yValues: [-17, 17]),
-                     BarChartDataEntry(x: 45, yValues: [-19, 120]),
-                     BarChartDataEntry(x: 55, yValues: [-19, 19]),
-                     BarChartDataEntry(x: 65, yValues: [-16, 16]),
-                     BarChartDataEntry(x: 75, yValues: [-13, 14]),
-                     BarChartDataEntry(x: 85, yValues: [-10, 11]),
-                     BarChartDataEntry(x: 95, yValues: [-5, 6]),
-                     BarChartDataEntry(x: 105, yValues: [-1, 2])
+        let yVals = [CHBarChartDataEntry(x: 5, yValues: [-10, 10]),
+                     CHBarChartDataEntry(x: 15, yValues: [-12, 13]),
+                     CHBarChartDataEntry(x: 25, yValues: [-15, 15]),
+                     CHBarChartDataEntry(x: 35, yValues: [-17, 17]),
+                     CHBarChartDataEntry(x: 45, yValues: [-19, 120]),
+                     CHBarChartDataEntry(x: 55, yValues: [-19, 19]),
+                     CHBarChartDataEntry(x: 65, yValues: [-16, 16]),
+                     CHBarChartDataEntry(x: 75, yValues: [-13, 14]),
+                     CHBarChartDataEntry(x: 85, yValues: [-10, 11]),
+                     CHBarChartDataEntry(x: 95, yValues: [-5, 6]),
+                     CHBarChartDataEntry(x: 105, yValues: [-1, 2])
         ]
         
         let set = BarChartDataSet(values: yVals, label: "Age Distribution")

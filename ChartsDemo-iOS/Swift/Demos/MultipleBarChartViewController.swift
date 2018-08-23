@@ -99,8 +99,8 @@ class MultipleBarChartViewController: DemoBaseViewController {
         let startYear = 1980
         let endYear = startYear + groupCount
         
-        let block: (Int) -> BarChartDataEntry = { (i) -> BarChartDataEntry in
-            return BarChartDataEntry(x: Double(i), y: Double(arc4random_uniform(randomMultiplier)))
+        let block: (Int) -> CHBarChartDataEntry = { (i) -> CHBarChartDataEntry in
+            return CHBarChartDataEntry(x: Double(i), y: Double(arc4random_uniform(randomMultiplier)))
         }
         let yVals1 = (startYear ..< endYear).map(block)
         let yVals2 = (startYear ..< endYear).map(block)

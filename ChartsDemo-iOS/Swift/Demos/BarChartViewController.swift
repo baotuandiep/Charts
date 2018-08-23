@@ -108,13 +108,13 @@ class BarChartViewController: DemoBaseViewController {
     func setDataCount(_ count: Int, range: UInt32) {
         let start = 1
         
-        let yVals = (start..<start+count+1).map { (i) -> BarChartDataEntry in
+        let yVals = (start..<start+count+1).map { (i) -> CHBarChartDataEntry in
             let mult = range + 1
             let val = Double(arc4random_uniform(mult))
             if arc4random_uniform(100) < 25 {
-                return BarChartDataEntry(x: Double(i), y: val, icon: UIImage(named: "icon"))
+                return CHBarChartDataEntry(x: Double(i), y: val, icon: UIImage(named: "icon"))
             } else {
-                return BarChartDataEntry(x: Double(i), y: val)
+                return CHBarChartDataEntry(x: Double(i), y: val)
             }
         }
         

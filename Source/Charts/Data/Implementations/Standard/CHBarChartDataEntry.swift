@@ -11,7 +11,7 @@
 
 import Foundation
 
-open class BarChartDataEntry: CHChartDataEntry
+open class CHBarChartDataEntry: CHChartDataEntry
 {
     /// the values the stacked barchart holds
     private var _yVals: [Double]?
@@ -57,7 +57,7 @@ open class BarChartDataEntry: CHChartDataEntry
     /// Constructor for stacked bar entries.
     @objc public init(x: Double, yValues: [Double])
     {
-        super.init(x: x, y: BarChartDataEntry.calcSum(values: yValues))
+        super.init(x: x, y: CHBarChartDataEntry.calcSum(values: yValues))
         self._yVals = yValues
         calcPosNegSum()
         calcRanges()
@@ -66,7 +66,7 @@ open class BarChartDataEntry: CHChartDataEntry
     /// Constructor for stacked bar entries. One data object for whole stack
     @objc public init(x: Double, yValues: [Double], data: AnyObject?)
     {
-        super.init(x: x, y: BarChartDataEntry.calcSum(values: yValues), data: data)
+        super.init(x: x, y: CHBarChartDataEntry.calcSum(values: yValues), data: data)
         self._yVals = yValues
         calcPosNegSum()
         calcRanges()
@@ -75,7 +75,7 @@ open class BarChartDataEntry: CHChartDataEntry
     /// Constructor for stacked bar entries. One data object for whole stack
     @objc public init(x: Double, yValues: [Double], icon: NSUIImage?, data: AnyObject?)
     {
-        super.init(x: x, y: BarChartDataEntry.calcSum(values: yValues), icon: icon, data: data)
+        super.init(x: x, y: CHBarChartDataEntry.calcSum(values: yValues), icon: icon, data: data)
         self._yVals = yValues
         calcPosNegSum()
         calcRanges()
@@ -84,7 +84,7 @@ open class BarChartDataEntry: CHChartDataEntry
     /// Constructor for stacked bar entries. One data object for whole stack
     @objc public init(x: Double, yValues: [Double], icon: NSUIImage?)
     {
-        super.init(x: x, y: BarChartDataEntry.calcSum(values: yValues), icon: icon)
+        super.init(x: x, y: CHBarChartDataEntry.calcSum(values: yValues), icon: icon)
         self._yVals = yValues
         calcPosNegSum()
         calcRanges()
@@ -202,7 +202,7 @@ open class BarChartDataEntry: CHChartDataEntry
         get { return self._yVals }
         set
         {
-            self.y = BarChartDataEntry.calcSum(values: newValue)
+            self.y = CHBarChartDataEntry.calcSum(values: newValue)
             self._yVals = newValue
             calcPosNegSum()
             calcRanges()
@@ -219,7 +219,7 @@ open class BarChartDataEntry: CHChartDataEntry
     
     open override func copyWithZone(_ zone: NSZone?) -> AnyObject
     {
-        let copy = super.copyWithZone(zone) as! BarChartDataEntry
+        let copy = super.copyWithZone(zone) as! CHBarChartDataEntry
         copy._yVals = _yVals
         copy.y = y
         copy._negativeSum = _negativeSum

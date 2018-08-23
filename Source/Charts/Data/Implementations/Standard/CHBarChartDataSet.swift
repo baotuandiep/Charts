@@ -19,8 +19,8 @@ open class CHBarChartDataSet: BarLineScatterCandleBubbleChartDataSet, CHIBarChar
     {
         self.highlightColor = NSUIColor.black
         
-        self.calcStackSize(entries: values as! [BarChartDataEntry])
-        self.calcEntryCountIncludingStacks(entries: values as! [BarChartDataEntry])
+        self.calcStackSize(entries: values as! [CHBarChartDataEntry])
+        self.calcEntryCountIncludingStacks(entries: values as! [CHBarChartDataEntry])
     }
     
     public required init()
@@ -46,7 +46,7 @@ open class CHBarChartDataSet: BarLineScatterCandleBubbleChartDataSet, CHIBarChar
     
     /// Calculates the total number of entries this DataSet represents, including
     /// stacks. All values belonging to a stack are calculated separately.
-    private func calcEntryCountIncludingStacks(entries: [BarChartDataEntry])
+    private func calcEntryCountIncludingStacks(entries: [CHBarChartDataEntry])
     {
         _entryCountStacks = 0
         
@@ -64,7 +64,7 @@ open class CHBarChartDataSet: BarLineScatterCandleBubbleChartDataSet, CHIBarChar
     }
     
     /// calculates the maximum stacksize that occurs in the Entries array of this DataSet
-    private func calcStackSize(entries: [BarChartDataEntry])
+    private func calcStackSize(entries: [CHBarChartDataEntry])
     {
         for i in 0 ..< entries.count
         {
@@ -80,7 +80,7 @@ open class CHBarChartDataSet: BarLineScatterCandleBubbleChartDataSet, CHIBarChar
     
     open override func calcMinMax(entry e: CHChartDataEntry)
     {
-        guard let e = e as? BarChartDataEntry
+        guard let e = e as? CHBarChartDataEntry
             else { return }
         
         if !e.y.isNaN

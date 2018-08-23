@@ -90,7 +90,7 @@
     {
         double mult = (range + 1);
         double val = (double) (arc4random_uniform(mult)) + mult / 3.0;
-        [yVals addObject:[[BarChartDataEntry alloc] initWithX:i y:val]];
+        [yVals addObject:[[CHBarChartDataEntry alloc] initWithX:i y:val]];
     }
     
     BarChartDataSet *set1 = nil;

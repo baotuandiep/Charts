@@ -131,19 +131,19 @@
 
     for (int i = startYear; i < endYear; i++)
     {
-        [yVals1 addObject:[[BarChartDataEntry alloc]
+        [yVals1 addObject:[[CHBarChartDataEntry alloc]
                            initWithX:i
                            y:(double) (arc4random_uniform(randomMultiplier))]];
         
-        [yVals2 addObject:[[BarChartDataEntry alloc]
+        [yVals2 addObject:[[CHBarChartDataEntry alloc]
                            initWithX:i
                            y:(double) (arc4random_uniform(randomMultiplier))]];
         
-        [yVals3 addObject:[[BarChartDataEntry alloc]
+        [yVals3 addObject:[[CHBarChartDataEntry alloc]
                            initWithX:i
                            y:(double) (arc4random_uniform(randomMultiplier))]];
         
-        [yVals4 addObject:[[BarChartDataEntry alloc]
+        [yVals4 addObject:[[CHBarChartDataEntry alloc]
                            initWithX:i
                            y:(double) (arc4random_uniform(randomMultiplier))]];
     }

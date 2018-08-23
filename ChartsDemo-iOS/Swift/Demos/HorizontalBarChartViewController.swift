@@ -94,10 +94,10 @@ class HorizontalBarChartViewController: DemoBaseViewController {
         let barWidth = 9.0
         let spaceForBar = 10.0
         
-        let yVals = (0..<count).map { (i) -> BarChartDataEntry in
+        let yVals = (0..<count).map { (i) -> CHBarChartDataEntry in
             let mult = range + 1
             let val = Double(arc4random_uniform(mult))
-            return BarChartDataEntry(x: Double(i)*spaceForBar, y: val, icon: #imageLiteral(resourceName: "icon"))
+            return CHBarChartDataEntry(x: Double(i)*spaceForBar, y: val, icon: #imageLiteral(resourceName: "icon"))
         }
         
         let set1 = BarChartDataSet(values: yVals, label: "DataSet")

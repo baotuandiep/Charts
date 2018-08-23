@@ -83,7 +83,7 @@ open class CHBarChartView: CHBarLineChartViewBase, CHBarChartDataProvider
     }
         
     /// - returns: The bounding box of the specified Entry in the specified DataSet. Returns null if the Entry could not be found in the charts data.
-    @objc open func getBarBounds(entry e: BarChartDataEntry) -> CGRect
+    @objc open func getBarBounds(entry e: CHBarChartDataEntry) -> CGRect
     {
         guard let
             data = _data as? CHBarChartData,

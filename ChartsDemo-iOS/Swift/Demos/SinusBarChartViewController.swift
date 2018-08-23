@@ -83,7 +83,7 @@ class SinusBarChartViewController: DemoBaseViewController {
     
     func setDataCount(_ count: Int) {
         let entries = (0..<count).map {
-            BarChartDataEntry(x: Double($0), y: sin(.pi * Double($0%128) / 64))
+            CHBarChartDataEntry(x: Double($0), y: sin(.pi * Double($0%128) / 64))
         }
         
         let set = BarChartDataSet(values: entries, label: "Sinus Function")
