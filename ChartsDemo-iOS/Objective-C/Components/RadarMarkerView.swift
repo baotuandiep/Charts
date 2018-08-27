@@ -12,7 +12,7 @@
 import Foundation
 import Charts
 
-open class RadarMarkerView: MarkerView
+open class RadarMarkerView: CHMarkerView
 {
     @IBOutlet var label: UILabel?
     
@@ -22,7 +22,7 @@ open class RadarMarkerView: MarkerView
         self.offset.y = -self.frame.size.height - 7.0
     }
     
-    open override func refreshContent(entry: CHChartDataEntry, highlight: Highlight)
+    open override func refreshContent(entry: CHChartDataEntry, highlight: CHHighlight)
     {
         label?.text = String.init(format: "%d %%", Int(round(entry.y)))
         layoutIfNeeded()

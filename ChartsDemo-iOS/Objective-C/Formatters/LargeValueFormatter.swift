@@ -7,7 +7,7 @@
 import Foundation
 import Charts
 
-open class LargeValueFormatter: NSObject, IValueFormatter, IAxisValueFormatter
+open class LargeValueFormatter: NSObject, CHIValueFormatter, CHIAxisValueFormatter
 {
     fileprivate static let MAX_LENGTH = 5
     
@@ -52,7 +52,7 @@ open class LargeValueFormatter: NSObject, IValueFormatter, IAxisValueFormatter
     }
     
     open func stringForValue(
-        _ value: Double, axis: AxisBase?) -> String
+        _ value: Double, axis: CHAxisBase?) -> String
     {
         return format(value: value)
     }

@@ -12,9 +12,9 @@
 #import "RadarChartViewController.h"
 #import "ChartsDemo_iOS-Swift.h"
 
-@interface RadarChartViewController () <ChartViewDelegate, IChartAxisValueFormatter>
+@interface RadarChartViewController () <CHChartViewDelegate, IChartAxisValueFormatter>
 
-@property (nonatomic, strong) IBOutlet RadarChartView *chartView;
+@property (nonatomic, strong) IBOutlet CHRadarChartView *chartView;
 @property (nonatomic, strong) NSArray<NSString *> *activities;
 @property (nonatomic, strong) UIColor *originalBarBgColor;
 @property (nonatomic, strong) UIColor *originalBarTintColor;
@@ -87,7 +87,7 @@
     
     [self updateChartData];
     
-    [_chartView animateWithXAxisDuration:1.4 yAxisDuration:1.4 easingOption:ChartEasingOptionEaseOutBack];
+    [_chartView animateWithXAxisDuration:1.4 yAxisDuration:1.4 easingOption:CHChartEasingOptionEaseOutBack];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -151,7 +151,7 @@
         [entries2 addObject:[[CHRadarChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + min)]];
     }
     
-    RadarChartDataSet *set1 = [[RadarChartDataSet alloc] initWithValues:entries1 label:@"Last Week"];
+    CHRadarChartDataSet *set1 = [[CHRadarChartDataSet alloc] initWithValues:entries1 label:@"Last Week"];
     [set1 setColor:[UIColor colorWithRed:103/255.0 green:110/255.0 blue:129/255.0 alpha:1.0]];
     set1.fillColor = [UIColor colorWithRed:103/255.0 green:110/255.0 blue:129/255.0 alpha:1.0];
     set1.drawFilledEnabled = YES;
@@ -160,7 +160,7 @@
     set1.drawHighlightCircleEnabled = YES;
     [set1 setDrawHighlightIndicators:NO];
 
-    RadarChartDataSet *set2 = [[RadarChartDataSet alloc] initWithValues:entries2 label:@"This Week"];
+    CHRadarChartDataSet *set2 = [[CHRadarChartDataSet alloc] initWithValues:entries2 label:@"This Week"];
     [set2 setColor:[UIColor colorWithRed:121/255.0 green:162/255.0 blue:175/255.0 alpha:1.0]];
     set2.fillColor = [UIColor colorWithRed:121/255.0 green:162/255.0 blue:175/255.0 alpha:1.0];
     set2.drawFilledEnabled = YES;
@@ -204,7 +204,7 @@
     
     if ([key isEqualToString:@"toggleFill"])
     {
-        for (RadarChartDataSet *set in _chartView.data.dataSets)
+        for (CHRadarChartDataSet *set in _chartView.data.dataSets)
         {
             set.drawFilledEnabled = !set.isDrawFilledEnabled;
         }
@@ -215,7 +215,7 @@
     
     if ([key isEqualToString:@"toggleHighlightCircle"])
     {
-        for (RadarChartDataSet *set in _chartView.data.dataSets)
+        for (CHRadarChartDataSet *set in _chartView.data.dataSets)
         {
             set.drawHighlightCircleEnabled = !set.drawHighlightCircleEnabled;
         }
@@ -244,7 +244,7 @@
     
     if ([key isEqualToString:@"spin"])
     {
-        [_chartView spinWithDuration:2.0 fromAngle:_chartView.rotationAngle toAngle:_chartView.rotationAngle + 360.f easingOption:ChartEasingOptionEaseInCubic];
+        [_chartView spinWithDuration:2.0 fromAngle:_chartView.rotationAngle toAngle:_chartView.rotationAngle + 360.f easingOption:CHChartEasingOptionEaseInCubic];
         return;
     }
     
@@ -253,12 +253,12 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

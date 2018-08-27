@@ -12,12 +12,12 @@
 #import "PositiveNegativeBarChartViewController.h"
 #import "ChartsDemo_iOS-Swift.h"
 
-@interface PositiveNegativeBarChartViewController () <ChartViewDelegate, IChartAxisValueFormatter>
+@interface PositiveNegativeBarChartViewController () <CHChartViewDelegate, IChartAxisValueFormatter>
 {
     NSArray<NSDictionary *> *dataList;
 }
 
-@property (nonatomic, strong) IBOutlet BarChartView *chartView;
+@property (nonatomic, strong) IBOutlet CHBarChartView *chartView;
 
 @end
 
@@ -149,11 +149,11 @@
         }
     }
     
-    BarChartDataSet *set = set = [[BarChartDataSet alloc] initWithValues:values label:@"Values"];
+    CHBarChartDataSet *set = set = [[CHBarChartDataSet alloc] initWithValues:values label:@"Values"];
     set.colors = colors;
     set.valueColors = colors;
     
-    BarChartData *data = [[BarChartData alloc] initWithDataSet:set];
+    CHBarChartData *data = [[CHBarChartData alloc] initWithDataSet:set];
     [data setValueFont:[UIFont systemFontOfSize:13.f]];
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -172,12 +172,12 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

@@ -71,11 +71,11 @@
 
 #pragma mark - Common option actions
 
-- (void)handleOption:(NSString *)key forChartView:(ChartViewBase *)chartView
+- (void)handleOption:(NSString *)key forChartView:(CHChartViewBase *)chartView
 {
     if ([key isEqualToString:@"toggleValues"])
     {
-        for (id<IChartDataSet> set in chartView.data.dataSets)
+        for (id<CHIChartDataSet> set in chartView.data.dataSets)
         {
             set.drawValuesEnabled = !set.isDrawValuesEnabled;
         }
@@ -85,7 +85,7 @@
     
     if ([key isEqualToString:@"toggleIcons"])
     {
-        for (id<IChartDataSet> set in chartView.data.dataSets)
+        for (id<CHIChartDataSet> set in chartView.data.dataSets)
         {
             set.drawIconsEnabled = !set.isDrawIconsEnabled;
         }
@@ -121,7 +121,7 @@
     
     if ([key isEqualToString:@"togglePinchZoom"])
     {
-        BarLineChartViewBase *barLineChart = (BarLineChartViewBase *)chartView;
+        CHBarLineChartViewBase *barLineChart = (CHBarLineChartViewBase *)chartView;
         barLineChart.pinchZoomEnabled = !barLineChart.isPinchZoomEnabled;
         
         [chartView setNeedsDisplay];
@@ -129,7 +129,7 @@
     
     if ([key isEqualToString:@"toggleAutoScaleMinMax"])
     {
-        BarLineChartViewBase *barLineChart = (BarLineChartViewBase *)chartView;
+        CHBarLineChartViewBase *barLineChart = (CHBarLineChartViewBase *)chartView;
         barLineChart.autoScaleMinMaxEnabled = !barLineChart.isAutoScaleMinMaxEnabled;
         
         [chartView notifyDataSetChanged];
@@ -143,9 +143,9 @@
     
     if ([key isEqualToString:@"toggleBarBorders"])
     {
-        for (id<IBarChartDataSet, NSObject> set in chartView.data.dataSets)
+        for (id<CHIBarChartDataSet, NSObject> set in chartView.data.dataSets)
         {
-            if ([set conformsToProtocol:@protocol(IBarChartDataSet)])
+            if ([set conformsToProtocol:@protocol(CHIBarChartDataSet)])
             {
                 set.barBorderWidth = set.barBorderWidth == 1.0 ? 0.0 : 1.0;
             }
@@ -258,7 +258,7 @@
     // Override this
 }
 
-- (void)setupPieChartView:(PieChartView *)chartView
+- (void)setupPieChartView:(CHPieChartView *)chartView
 {
     chartView.usePercentValuesEnabled = YES;
     chartView.drawSlicesUnderHoleEnabled = NO;
@@ -303,12 +303,12 @@
     l.yOffset = 0.0;
 }
 
-- (void)setupRadarChartView:(RadarChartView *)chartView
+- (void)setupRadarChartView:(CHRadarChartView *)chartView
 {
     chartView.chartDescription.enabled = NO;
 }
 
-- (void)setupBarLineChartView:(BarLineChartViewBase *)chartView
+- (void)setupBarLineChartView:(CHBarLineChartViewBase *)chartView
 {
     chartView.chartDescription.enabled = NO;
     

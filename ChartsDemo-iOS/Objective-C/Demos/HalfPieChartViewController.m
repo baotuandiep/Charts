@@ -12,9 +12,9 @@
 #import "HalfPieChartViewController.h"
 #import "ChartsDemo_iOS-Swift.h"
 
-@interface HalfPieChartViewController () <ChartViewDelegate>
+@interface HalfPieChartViewController () <CHChartViewDelegate>
 
-@property (nonatomic, strong) IBOutlet PieChartView *chartView;
+@property (nonatomic, strong) IBOutlet CHPieChartView *chartView;
 
 @end
 
@@ -69,7 +69,7 @@
     
     [self updateChartData];
     
-    [_chartView animateWithXAxisDuration:1.4 easingOption:ChartEasingOptionEaseOutBack];
+    [_chartView animateWithXAxisDuration:1.4 easingOption:CHChartEasingOptionEaseOutBack];
 }
 
 - (void)didReceiveMemoryWarning
@@ -178,7 +178,7 @@
     
     if ([key isEqualToString:@"spin"])
     {
-        [_chartView spinWithDuration:2.0 fromAngle:_chartView.rotationAngle toAngle:_chartView.rotationAngle + 360.f easingOption:ChartEasingOptionEaseInCubic];
+        [_chartView spinWithDuration:2.0 fromAngle:_chartView.rotationAngle toAngle:_chartView.rotationAngle + 360.f easingOption:CHChartEasingOptionEaseInCubic];
         return;
     }
     
@@ -189,12 +189,12 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

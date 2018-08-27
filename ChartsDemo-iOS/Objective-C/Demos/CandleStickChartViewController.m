@@ -12,9 +12,9 @@
 #import "CandleStickChartViewController.h"
 #import "ChartsDemo_iOS-Swift.h"
 
-@interface CandleStickChartViewController () <ChartViewDelegate>
+@interface CandleStickChartViewController () <CHChartViewDelegate>
 
-@property (nonatomic, strong) IBOutlet CandleStickChartView *chartView;
+@property (nonatomic, strong) IBOutlet CHCandleStickChartView *chartView;
 @property (nonatomic, strong) IBOutlet UISlider *sliderX;
 @property (nonatomic, strong) IBOutlet UISlider *sliderY;
 @property (nonatomic, strong) IBOutlet UITextField *sliderTextX;
@@ -102,10 +102,10 @@
         double open = (double) (arc4random_uniform(6)) + 1.0;
         double close = (double) (arc4random_uniform(6)) + 1.0;
         BOOL even = i % 2 == 0;
-        [yVals1 addObject:[[CandleChartDataEntry alloc] initWithX:i shadowH:val + high shadowL:val - low open:even ? val + open : val - open close:even ? val - close : val + close icon: [UIImage imageNamed:@"icon"]]];
+        [yVals1 addObject:[[CHCandleChartDataEntry alloc] initWithX:i shadowH:val + high shadowL:val - low open:even ? val + open : val - open close:even ? val - close : val + close icon: [UIImage imageNamed:@"icon"]]];
     }
         
-    CandleChartDataSet *set1 = [[CandleChartDataSet alloc] initWithValues:yVals1 label:@"Data Set"];
+    CHCandleChartDataSet *set1 = [[CHCandleChartDataSet alloc] initWithValues:yVals1 label:@"Data Set"];
     set1.axisDependency = AxisDependencyLeft;
     [set1 setColor:[UIColor colorWithWhite:80/255.f alpha:1.f]];
     
@@ -119,7 +119,7 @@
     set1.increasingFilled = NO;
     set1.neutralColor = UIColor.blueColor;
     
-    CandleChartData *data = [[CandleChartData alloc] initWithDataSet:set1];
+    CHCandleChartData *data = [[CHCandleChartData alloc] initWithDataSet:set1];
     
     _chartView.data = data;
 }
@@ -128,7 +128,7 @@
 {
     if ([key isEqualToString:@"toggleShadowColorSameAsCandle"])
     {
-        for (id<ICandleChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHICandleChartDataSet> set in _chartView.data.dataSets)
         {
             set.shadowColorSameAsCandle = !set.shadowColorSameAsCandle;
         }
@@ -137,7 +137,7 @@
         return;
     } else if ([key isEqualToString:@"toggleShowCandleBar"])
     {
-        for (id<ICandleChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHICandleChartDataSet> set in _chartView.data.dataSets)
         {
             set.showCandleBar = !set.showCandleBar;
         }
@@ -161,12 +161,12 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

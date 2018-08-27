@@ -9,10 +9,10 @@
 @implementation DayAxisValueFormatter
 {
     NSArray *months;
-    __weak BarLineChartViewBase *_chart;
+    __weak CHBarLineChartViewBase *_chart;
 }
 
-- (id)initForChart:(BarLineChartViewBase *)chart
+- (id)initForChart:(CHBarLineChartViewBase *)chart
 {
     self = [super init];
     if (self)

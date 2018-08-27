@@ -12,9 +12,9 @@
 #import "StackedBarChartViewController.h"
 #import "ChartsDemo_iOS-Swift.h"
 
-@interface StackedBarChartViewController () <ChartViewDelegate>
+@interface StackedBarChartViewController () <CHChartViewDelegate>
 
-@property (nonatomic, strong) IBOutlet BarChartView *chartView;
+@property (nonatomic, strong) IBOutlet CHBarChartView *chartView;
 @property (nonatomic, strong) IBOutlet UISlider *sliderX;
 @property (nonatomic, strong) IBOutlet UISlider *sliderY;
 @property (nonatomic, strong) IBOutlet UITextField *sliderTextX;
@@ -115,21 +115,21 @@
         [yVals addObject:[[CHBarChartDataEntry alloc] initWithX:i yValues:@[@(val1), @(val2), @(val3)] icon: [UIImage imageNamed:@"icon"]]];
     }
     
-    BarChartDataSet *set1 = nil;
+    CHBarChartDataSet *set1 = nil;
     if (_chartView.data.dataSetCount > 0)
     {
-        set1 = (BarChartDataSet *)_chartView.data.dataSets[0];
+        set1 = (CHBarChartDataSet *)_chartView.data.dataSets[0];
         set1.values = yVals;
         [_chartView.data notifyDataChanged];
         [_chartView notifyDataSetChanged];
     }
     else
     {
-        set1 = [[BarChartDataSet alloc] initWithValues:yVals label:@"Statistics Vienna 2014"];
+        set1 = [[CHBarChartDataSet alloc] initWithValues:yVals label:@"Statistics Vienna 2014"];
         
         set1.drawIconsEnabled = NO;
         
-        set1.colors = @[ChartColorTemplates.material[0], ChartColorTemplates.material[1], ChartColorTemplates.material[2]];
+        set1.colors = @[CHChartColorTemplates.material[0], CHChartColorTemplates.material[1], CHChartColorTemplates.material[2]];
         set1.stackLabels = @[@"Births", @"Divorces", @"Marriages"];
         
         NSMutableArray *dataSets = [[NSMutableArray alloc] init];
@@ -140,7 +140,7 @@
         formatter.negativeSuffix = @" $";
         formatter.positiveSuffix = @" $";
         
-        BarChartData *data = [[BarChartData alloc] initWithDataSets:dataSets];
+        CHBarChartData *data = [[CHBarChartData alloc] initWithDataSets:dataSets];
         [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:7.f]];
         [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:formatter]];
         [data setValueTextColor:UIColor.whiteColor];
@@ -167,12 +167,12 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected, stack-index %ld", (long)highlight.stackIndex);
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

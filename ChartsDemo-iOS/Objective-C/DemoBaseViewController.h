@@ -23,12 +23,12 @@
 
 @property (nonatomic, assign) BOOL shouldHideData;
 
-- (void)handleOption:(NSString *)key forChartView:(ChartViewBase *)chartView;
+- (void)handleOption:(NSString *)key forChartView:(CHChartViewBase *)chartView;
 
 - (void)updateChartData;
 
-- (void)setupPieChartView:(PieChartView *)chartView;
-- (void)setupRadarChartView:(RadarChartView *)chartView;
-- (void)setupBarLineChartView:(BarLineChartViewBase *)chartView;
+- (void)setupPieChartView:(CHPieChartView *)chartView;
+- (void)setupRadarChartView:(CHRadarChartView *)chartView;
+- (void)setupBarLineChartView:(CHBarLineChartViewBase *)chartView;
 
 @end

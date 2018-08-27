@@ -9,11 +9,11 @@ import Charts
 
 open class XYMarkerView: BalloonMarker
 {
-    @objc open var xAxisValueFormatter: IAxisValueFormatter?
+    @objc open var xAxisValueFormatter: CHIAxisValueFormatter?
     fileprivate var yFormatter = NumberFormatter()
     
     @objc public init(color: UIColor, font: UIFont, textColor: UIColor, insets: UIEdgeInsets,
-                xAxisValueFormatter: IAxisValueFormatter)
+                xAxisValueFormatter: CHIAxisValueFormatter)
     {
         super.init(color: color, font: font, textColor: textColor, insets: insets)
         self.xAxisValueFormatter = xAxisValueFormatter
@@ -21,7 +21,7 @@ open class XYMarkerView: BalloonMarker
         yFormatter.maximumFractionDigits = 1
     }
     
-    open override func refreshContent(entry: CHChartDataEntry, highlight: Highlight)
+    open override func refreshContent(entry: CHChartDataEntry, highlight: CHHighlight)
     {
         setLabel("x: " + xAxisValueFormatter!.stringForValue(entry.x, axis: nil) + ", y: " + yFormatter.string(from: NSNumber(floatLiteral: entry.y))!)
     }

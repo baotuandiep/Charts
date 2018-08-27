@@ -9,6 +9,6 @@
 
 @interface DayAxisValueFormatter : NSObject <IChartAxisValueFormatter>
 
-- (id)initForChart:(BarLineChartViewBase *)chart;
+- (id)initForChart:(CHBarLineChartViewBase *)chart;
 
 @end

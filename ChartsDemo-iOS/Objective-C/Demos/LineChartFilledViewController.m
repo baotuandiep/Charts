@@ -12,9 +12,9 @@
 #import "LineChartFilledViewController.h"
 #import "ChartsDemo_iOS-Swift.h"
 
-@interface LineChartFilledViewController () <ChartViewDelegate>
+@interface LineChartFilledViewController () <CHChartViewDelegate>
 
-@property (nonatomic, strong) IBOutlet LineChartView *chartView;
+@property (nonatomic, strong) IBOutlet CHLineChartView *chartView;
 @property (nonatomic, strong) IBOutlet UISlider *sliderX;
 @property (nonatomic, strong) IBOutlet UISlider *sliderY;
 @property (nonatomic, strong) IBOutlet UITextField *sliderTextX;
@@ -89,13 +89,13 @@
     for (int i = 0; i < count; i++)
     {
         double val = arc4random_uniform(range) + 50;
-        [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i y:val]];
+        [yVals1 addObject:[[CHChartDataEntry alloc] initWithX:i y:val]];
     }
     
     for (int i = 0; i < count; i++)
     {
         double val = arc4random_uniform(range) + 450;
-        [yVals2 addObject:[[ChartDataEntry alloc] initWithX:i y:val]];
+        [yVals2 addObject:[[CHChartDataEntry alloc] initWithX:i y:val]];
     }
     
     CHLineChartDataSet *set1 = nil;
@@ -123,7 +123,7 @@
         set1.fillColor = UIColor.whiteColor;
         set1.highlightColor = [UIColor colorWithRed:244/255.0 green:117/255.0 blue:117/255.0 alpha:1.0];
         set1.drawCircleHoleEnabled = NO;
-        set1.fillFormatter = [ChartDefaultFillFormatter withBlock:^CGFloat(id<ILineChartDataSet>  _Nonnull dataSet, id<CHLineChartDataProvider>  _Nonnull dataProvider) {
+        set1.fillFormatter = [ChartDefaultFillFormatter withBlock:^CGFloat(id<CHILineChartDataSet>  _Nonnull dataSet, id<CHLineChartDataProvider>  _Nonnull dataProvider) {
             return self.chartView.leftAxis.axisMinimum;
         }];
         
@@ -138,7 +138,7 @@
         set2.fillColor = UIColor.whiteColor;
         set2.highlightColor = [UIColor colorWithRed:244/255.0 green:117/255.0 blue:117/255.0 alpha:1.0];
         set2.drawCircleHoleEnabled = NO;
-        set2.fillFormatter = [ChartDefaultFillFormatter withBlock:^CGFloat(id<ILineChartDataSet>  _Nonnull dataSet, id<CHLineChartDataProvider>  _Nonnull dataProvider) {
+        set2.fillFormatter = [ChartDefaultFillFormatter withBlock:^CGFloat(id<CHILineChartDataSet>  _Nonnull dataSet, id<CHLineChartDataProvider>  _Nonnull dataProvider) {
             return self.chartView.leftAxis.axisMaximum;
         }];
         
@@ -146,7 +146,7 @@
         [dataSets addObject:set1];
         [dataSets addObject:set2];
         
-        LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
+        CHLineChartData *data = [[CHLineChartData alloc] initWithDataSets:dataSets];
         [data setDrawValues:NO];
         
         _chartView.data = data;
@@ -165,12 +165,12 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

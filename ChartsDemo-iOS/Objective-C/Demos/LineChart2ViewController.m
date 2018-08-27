@@ -12,9 +12,9 @@
 #import "LineChart2ViewController.h"
 #import "ChartsDemo_iOS-Swift.h"
 
-@interface LineChart2ViewController () <ChartViewDelegate>
+@interface LineChart2ViewController () <CHChartViewDelegate>
 
-@property (nonatomic, strong) IBOutlet LineChartView *chartView;
+@property (nonatomic, strong) IBOutlet CHLineChartView *chartView;
 @property (nonatomic, strong) IBOutlet UISlider *sliderX;
 @property (nonatomic, strong) IBOutlet UISlider *sliderY;
 @property (nonatomic, strong) IBOutlet UITextField *sliderTextX;
@@ -122,21 +122,21 @@
     {
         double mult = range / 2.0;
         double val = (double) (arc4random_uniform(mult)) + 50;
-        [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i y:val]];
+        [yVals1 addObject:[[CHChartDataEntry alloc] initWithX:i y:val]];
     }
     
     for (int i = 0; i < count - 1; i++)
     {
         double mult = range;
         double val = (double) (arc4random_uniform(mult)) + 450;
-        [yVals2 addObject:[[ChartDataEntry alloc] initWithX:i y:val]];
+        [yVals2 addObject:[[CHChartDataEntry alloc] initWithX:i y:val]];
     }
     
     for (int i = 0; i < count; i++)
     {
         double mult = range;
         double val = (double) (arc4random_uniform(mult)) + 500;
-        [yVals3 addObject:[[ChartDataEntry alloc] initWithX:i y:val]];
+        [yVals3 addObject:[[CHChartDataEntry alloc] initWithX:i y:val]];
     }
     
     CHLineChartDataSet *set1 = nil, *set2 = nil, *set3 = nil;
@@ -192,7 +192,7 @@
         [dataSets addObject:set2];
         [dataSets addObject:set3];
         
-        LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
+        CHLineChartData *data = [[CHLineChartData alloc] initWithDataSets:dataSets];
         [data setValueTextColor:UIColor.whiteColor];
         [data setValueFont:[UIFont systemFontOfSize:9.f]];
         
@@ -204,7 +204,7 @@
 {
     if ([key isEqualToString:@"toggleFilled"])
     {
-        for (id<ILineChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHILineChartDataSet> set in _chartView.data.dataSets)
         {
             set.drawFilledEnabled = !set.isDrawFilledEnabled;
         }
@@ -215,7 +215,7 @@
     
     if ([key isEqualToString:@"toggleCircles"])
     {
-        for (id<ILineChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHILineChartDataSet> set in _chartView.data.dataSets)
         {
             set.drawCirclesEnabled = !set.isDrawCirclesEnabled;
         }
@@ -226,7 +226,7 @@
     
     if ([key isEqualToString:@"toggleCubic"])
     {
-        for (id<ILineChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHILineChartDataSet> set in _chartView.data.dataSets)
         {
             set.mode = set.mode == LineChartModeCubicBezier ? LineChartModeLinear : LineChartModeCubicBezier;
         }
@@ -237,7 +237,7 @@
 
     if ([key isEqualToString:@"toggleStepped"])
     {
-        for (id<ILineChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHILineChartDataSet> set in _chartView.data.dataSets)
         {
             switch (set.mode) {
                 case LineChartModeLinear:
@@ -254,7 +254,7 @@
     
     if ([key isEqualToString:@"toggleHorizontalCubic"])
     {
-        for (id<ILineChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHILineChartDataSet> set in _chartView.data.dataSets)
         {
             set.mode = set.mode == LineChartModeCubicBezier ? LineChartModeHorizontalBezier : LineChartModeCubicBezier;
         }
@@ -278,7 +278,7 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
     
@@ -288,7 +288,7 @@
 
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

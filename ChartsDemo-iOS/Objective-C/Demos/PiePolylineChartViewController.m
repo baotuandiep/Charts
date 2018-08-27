@@ -9,9 +9,9 @@
 #import "PiePolylineChartViewController.h"
 #import "ChartsDemo_iOS-Swift.h"
 
-@interface PiePolylineChartViewController () <ChartViewDelegate>
+@interface PiePolylineChartViewController () <CHChartViewDelegate>
 
-@property (nonatomic, strong) IBOutlet PieChartView *chartView;
+@property (nonatomic, strong) IBOutlet CHPieChartView *chartView;
 @property (nonatomic, strong) IBOutlet UISlider *sliderX;
 @property (nonatomic, strong) IBOutlet UISlider *sliderY;
 @property (nonatomic, strong) IBOutlet UITextField *sliderTextX;
@@ -51,7 +51,7 @@
     _sliderY.value = 100.0;
     [self slidersValueChanged:nil];
     
-    [_chartView animateWithYAxisDuration:1.4 easingOption:ChartEasingOptionEaseOutBack];
+    [_chartView animateWithYAxisDuration:1.4 easingOption:CHChartEasingOptionEaseOutBack];
 }
 
 - (void)didReceiveMemoryWarning
@@ -191,12 +191,12 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

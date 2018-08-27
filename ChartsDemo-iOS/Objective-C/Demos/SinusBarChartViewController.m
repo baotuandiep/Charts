@@ -12,9 +12,9 @@
 #import "SinusBarChartViewController.h"
 #import "ChartsDemo_iOS-Swift.h"
 
-@interface SinusBarChartViewController () <ChartViewDelegate>
+@interface SinusBarChartViewController () <CHChartViewDelegate>
 
-@property (nonatomic, strong) IBOutlet BarChartView *chartView;
+@property (nonatomic, strong) IBOutlet CHBarChartView *chartView;
 @property (nonatomic, strong) IBOutlet UISlider *sliderX;
 @property (nonatomic, strong) IBOutlet UITextField *sliderTextX;
 
@@ -114,20 +114,20 @@
         [entries addObject:[[CHBarChartDataEntry alloc] initWithX:(double)i y:sinf(M_PI * (i % 128) / 64.0)]];
     }
     
-    BarChartDataSet *set = nil;
+    CHBarChartDataSet *set = nil;
     if (_chartView.data.dataSetCount > 0)
     {
-        set = (BarChartDataSet *)_chartView.data.dataSets[0];
+        set = (CHBarChartDataSet *)_chartView.data.dataSets[0];
         set.values = entries;
         [_chartView.data notifyDataChanged];
         [_chartView notifyDataSetChanged];
     }
     else
     {
-        set = [[BarChartDataSet alloc] initWithValues:entries label:@"Sinus Function"];
+        set = [[CHBarChartDataSet alloc] initWithValues:entries label:@"Sinus Function"];
         [set setColor:[UIColor colorWithRed:240/255.f green:120/255.f blue:124/255.f alpha:1.f]];
         
-        BarChartData *data = [[BarChartData alloc] initWithDataSet:set];
+        CHBarChartData *data = [[CHBarChartData alloc] initWithDataSet:set];
         [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.f]];
         [data setDrawValues:NO];
         
@@ -153,12 +153,12 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

@@ -12,9 +12,9 @@
 #import "NegativeStackedBarChartViewController.h"
 #import "ChartsDemo_iOS-Swift.h"
 
-@interface NegativeStackedBarChartViewController () <ChartViewDelegate, IChartAxisValueFormatter>
+@interface NegativeStackedBarChartViewController () <CHChartViewDelegate, IChartAxisValueFormatter>
 
-@property (nonatomic, strong) IBOutlet HorizontalBarChartView *chartView;
+@property (nonatomic, strong) IBOutlet CHHorizontalBarChartView *chartView;
 
 @end
 
@@ -120,10 +120,10 @@
     [yValues addObject:[[CHBarChartDataEntry alloc] initWithX:95 yValues:@[ @-5, @6 ]]];
     [yValues addObject:[[CHBarChartDataEntry alloc] initWithX:105 yValues:@[ @-1, @2 ]]];
     
-    BarChartDataSet *set = nil;
+    CHBarChartDataSet *set = nil;
     if (_chartView.data.dataSetCount > 0)
     {
-        set = (BarChartDataSet *)_chartView.data.dataSets[0];
+        set = (CHBarChartDataSet *)_chartView.data.dataSets[0];
         set.values = yValues;
         [_chartView.data notifyDataChanged];
         [_chartView notifyDataSetChanged];
@@ -137,7 +137,7 @@
         customFormatter.minimumSignificantDigits = 1;
         customFormatter.minimumFractionDigits = 1;
         
-        set = [[BarChartDataSet alloc] initWithValues:yValues label:@"Age Distribution"];
+        set = [[CHBarChartDataSet alloc] initWithValues:yValues label:@"Age Distribution"];
         
         set.drawIconsEnabled = NO;
         
@@ -152,7 +152,7 @@
                             @"Men", @"Women"
                             ];
         
-        BarChartData *data = [[BarChartData alloc] initWithDataSet:set];
+        CHBarChartData *data = [[CHBarChartData alloc] initWithDataSet:set];
         
         data.barWidth = 8.5;
         
@@ -174,12 +174,12 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected, stack-index %ld", (long)highlight.stackIndex);
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

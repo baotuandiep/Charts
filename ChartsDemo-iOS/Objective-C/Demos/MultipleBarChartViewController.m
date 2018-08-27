@@ -13,9 +13,9 @@
 #import "ChartsDemo_iOS-Swift.h"
 #import "IntAxisValueFormatter.h"
 
-@interface MultipleBarChartViewController () <ChartViewDelegate>
+@interface MultipleBarChartViewController () <CHChartViewDelegate>
 
-@property (nonatomic, strong) IBOutlet BarChartView *chartView;
+@property (nonatomic, strong) IBOutlet CHBarChartView *chartView;
 @property (nonatomic, strong) IBOutlet UISlider *sliderX;
 @property (nonatomic, strong) IBOutlet UISlider *sliderY;
 @property (nonatomic, strong) IBOutlet UITextField *sliderTextX;
@@ -148,19 +148,19 @@
                            y:(double) (arc4random_uniform(randomMultiplier))]];
     }
     
-    BarChartDataSet *set1 = nil, *set2 = nil, *set3 = nil, *set4 = nil;
+    CHBarChartDataSet *set1 = nil, *set2 = nil, *set3 = nil, *set4 = nil;
     if (_chartView.data.dataSetCount > 0)
     {
-        set1 = (BarChartDataSet *)_chartView.data.dataSets[0];
-        set2 = (BarChartDataSet *)_chartView.data.dataSets[1];
-        set3 = (BarChartDataSet *)_chartView.data.dataSets[2];
-        set4 = (BarChartDataSet *)_chartView.data.dataSets[3];
+        set1 = (CHBarChartDataSet *)_chartView.data.dataSets[0];
+        set2 = (CHBarChartDataSet *)_chartView.data.dataSets[1];
+        set3 = (CHBarChartDataSet *)_chartView.data.dataSets[2];
+        set4 = (CHBarChartDataSet *)_chartView.data.dataSets[3];
         set1.values = yVals1;
         set2.values = yVals2;
         set3.values = yVals3;
         set4.values = yVals4;
         
-        BarChartData *data = _chartView.barData;
+        CHBarChartData *data = _chartView.barData;
         
         _chartView.xAxis.axisMinimum = startYear;
         _chartView.xAxis.axisMaximum = [data groupWidthWithGroupSpace:groupSpace barSpace: barSpace] * _sliderX.value + startYear;
@@ -171,16 +171,16 @@
     }
     else
     {
-        set1 = [[BarChartDataSet alloc] initWithValues:yVals1 label:@"Company A"];
+        set1 = [[CHBarChartDataSet alloc] initWithValues:yVals1 label:@"Company A"];
         [set1 setColor:[UIColor colorWithRed:104/255.f green:241/255.f blue:175/255.f alpha:1.f]];
         
-        set2 = [[BarChartDataSet alloc] initWithValues:yVals2 label:@"Company B"];
+        set2 = [[CHBarChartDataSet alloc] initWithValues:yVals2 label:@"Company B"];
         [set2 setColor:[UIColor colorWithRed:164/255.f green:228/255.f blue:251/255.f alpha:1.f]];
         
-        set3 = [[BarChartDataSet alloc] initWithValues:yVals3 label:@"Company C"];
+        set3 = [[CHBarChartDataSet alloc] initWithValues:yVals3 label:@"Company C"];
         [set3 setColor:[UIColor colorWithRed:242/255.f green:247/255.f blue:158/255.f alpha:1.f]];
         
-        set4 = [[BarChartDataSet alloc] initWithValues:yVals4 label:@"Company D"];
+        set4 = [[CHBarChartDataSet alloc] initWithValues:yVals4 label:@"Company D"];
         [set4 setColor:[UIColor colorWithRed:255/255.f green:102/255.f blue:0/255.f alpha:1.f]];
         
         NSMutableArray *dataSets = [[NSMutableArray alloc] init];
@@ -189,7 +189,7 @@
         [dataSets addObject:set3];
         [dataSets addObject:set4];
         
-        BarChartData *data = [[BarChartData alloc] initWithDataSets:dataSets];
+        CHBarChartData *data = [[CHBarChartData alloc] initWithDataSets:dataSets];
         [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.f]];
         [data setValueFormatter:[[LargeValueFormatter alloc] init]];
         
@@ -228,12 +228,12 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

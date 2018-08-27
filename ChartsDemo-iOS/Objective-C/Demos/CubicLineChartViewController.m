@@ -26,9 +26,9 @@
 
 @end
 
-@interface CubicLineChartViewController () <ChartViewDelegate>
+@interface CubicLineChartViewController () <CHChartViewDelegate>
 
-@property (nonatomic, strong) IBOutlet LineChartView *chartView;
+@property (nonatomic, strong) IBOutlet CHLineChartView *chartView;
 @property (nonatomic, strong) IBOutlet UISlider *sliderX;
 @property (nonatomic, strong) IBOutlet UISlider *sliderY;
 @property (nonatomic, strong) IBOutlet UITextField *sliderTextX;
@@ -119,7 +119,7 @@
     {
         double mult = (range + 1);
         double val = (double) (arc4random_uniform(mult)) + 20;
-        [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i y:val]];
+        [yVals1 addObject:[[CHChartDataEntry alloc] initWithX:i y:val]];
     }
     
     CHLineChartDataSet *set1 = nil;
@@ -146,7 +146,7 @@
         set1.drawHorizontalHighlightIndicatorEnabled = NO;
         set1.fillFormatter = [[CubicLineSampleFillFormatter alloc] init];
         
-        LineChartData *data = [[LineChartData alloc] initWithDataSet:set1];
+        CHLineChartData *data = [[CHLineChartData alloc] initWithDataSet:set1];
         [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:9.f]];
         [data setDrawValues:NO];
         
@@ -158,7 +158,7 @@
 {
     if ([key isEqualToString:@"toggleFilled"])
     {
-        for (id<ILineChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHILineChartDataSet> set in _chartView.data.dataSets)
         {
             set.drawFilledEnabled = !set.isDrawFilledEnabled;
         }
@@ -169,7 +169,7 @@
     
     if ([key isEqualToString:@"toggleCircles"])
     {
-        for (id<ILineChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHILineChartDataSet> set in _chartView.data.dataSets)
         {
             set.drawCirclesEnabled = !set.isDrawCirclesEnabled;
         }
@@ -180,7 +180,7 @@
     
     if ([key isEqualToString:@"toggleCubic"])
     {
-        for (id<ILineChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHILineChartDataSet> set in _chartView.data.dataSets)
         {
             set.mode = set.mode == LineChartModeCubicBezier ? LineChartModeLinear : LineChartModeCubicBezier;
         }
@@ -191,7 +191,7 @@
     
     if ([key isEqualToString:@"toggleStepped"])
     {
-        for (id<ILineChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHILineChartDataSet> set in _chartView.data.dataSets)
         {
             set.mode = set.mode == LineChartModeStepped ? LineChartModeLinear : LineChartModeStepped;
         }
@@ -201,7 +201,7 @@
     
     if ([key isEqualToString:@"toggleHorizontalCubic"])
     {
-        for (id<ILineChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHILineChartDataSet> set in _chartView.data.dataSets)
         {
             set.mode = set.mode == LineChartModeCubicBezier ? LineChartModeHorizontalBezier : LineChartModeCubicBezier;
         }
@@ -225,12 +225,12 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

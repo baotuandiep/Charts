@@ -12,9 +12,9 @@
 #import "ColoredLineChartViewController.h"
 #import "ChartsDemo_iOS-Swift.h"
 
-@interface ColoredLineChartViewController () <ChartViewDelegate>
+@interface ColoredLineChartViewController () <CHChartViewDelegate>
 
-@property (nonatomic, strong) IBOutletCollection(LineChartView) NSArray *chartViews;
+@property (nonatomic, strong) IBOutletCollection(CHLineChartView) NSArray *chartViews;
 
 @end
 
@@ -28,7 +28,7 @@
     
     for (int i = 0; i < _chartViews.count; i++)
     {
-        LineChartData *data = [self dataWithCount:36 range:100];
+        CHLineChartData *data = [self dataWithCount:36 range:100];
         [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:7.f]];
         
         NSArray *colors = @[
@@ -42,7 +42,7 @@
     }
 }
 
-- (void)setupChart:(LineChartView *)chart data:(LineChartData *)data color:(UIColor *)color
+- (void)setupChart:(CHLineChartView *)chart data:(CHLineChartData *)data color:(UIColor *)color
 {
     [(CHLineChartDataSet *)[data getDataSetByIndex:0] setCircleHoleColor:color];
 
@@ -76,14 +76,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (LineChartData *)dataWithCount:(int)count range:(double)range
+- (CHLineChartData *)dataWithCount:(int)count range:(double)range
 {
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < count; i++)
     {
         double val = (double) (arc4random_uniform(range)) + 3;
-        [yVals addObject:[[ChartDataEntry alloc] initWithX:i y:val]];
+        [yVals addObject:[[CHChartDataEntry alloc] initWithX:i y:val]];
     }
     
     CHLineChartDataSet *set1 = [[CHLineChartDataSet alloc] initWithValues:yVals label:@"DataSet 1"];
@@ -96,17 +96,17 @@
     set1.highlightColor = UIColor.whiteColor;
     set1.drawValuesEnabled = NO;
     
-    return [[LineChartData alloc] initWithDataSet:set1];
+    return [[CHLineChartData alloc] initWithDataSet:set1];
 }
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

@@ -13,9 +13,9 @@
 #import "ChartsDemo_iOS-Swift.h"
 #import "DayAxisValueFormatter.h"
 
-@interface BarChartViewController () <ChartViewDelegate>
+@interface BarChartViewController () <CHChartViewDelegate>
 
-@property (nonatomic, strong) IBOutlet BarChartView *chartView;
+@property (nonatomic, strong) IBOutlet CHBarChartView *chartView;
 @property (nonatomic, strong) IBOutlet UISlider *sliderX;
 @property (nonatomic, strong) IBOutlet UISlider *sliderY;
 @property (nonatomic, strong) IBOutlet UITextField *sliderTextX;
@@ -144,24 +144,24 @@
         }
     }
     
-    BarChartDataSet *set1 = nil;
+    CHBarChartDataSet *set1 = nil;
     if (_chartView.data.dataSetCount > 0)
     {
-        set1 = (BarChartDataSet *)_chartView.data.dataSets[0];
+        set1 = (CHBarChartDataSet *)_chartView.data.dataSets[0];
         set1.values = yVals;
         [_chartView.data notifyDataChanged];
         [_chartView notifyDataSetChanged];
     }
     else
     {
-        set1 = [[BarChartDataSet alloc] initWithValues:yVals label:@"The year 2017"];
-        [set1 setColors:ChartColorTemplates.material];
+        set1 = [[CHBarChartDataSet alloc] initWithValues:yVals label:@"The year 2017"];
+        [set1 setColors:CHChartColorTemplates.material];
         set1.drawIconsEnabled = NO;
         
         NSMutableArray *dataSets = [[NSMutableArray alloc] init];
         [dataSets addObject:set1];
         
-        BarChartData *data = [[BarChartData alloc] initWithDataSets:dataSets];
+        CHBarChartData *data = [[CHBarChartData alloc] initWithDataSets:dataSets];
         [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.f]];
         
         data.barWidth = 0.9f;
@@ -187,12 +187,12 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

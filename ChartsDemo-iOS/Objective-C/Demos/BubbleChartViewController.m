@@ -12,9 +12,9 @@
 #import "BubbleChartViewController.h"
 #import "ChartsDemo_iOS-Swift.h"
 
-@interface BubbleChartViewController () <ChartViewDelegate>
+@interface BubbleChartViewController () <CHChartViewDelegate>
 
-@property (nonatomic, strong) IBOutlet BubbleChartView *chartView;
+@property (nonatomic, strong) IBOutlet CHBubbleChartView *chartView;
 @property (nonatomic, strong) IBOutlet UISlider *sliderX;
 @property (nonatomic, strong) IBOutlet UISlider *sliderY;
 @property (nonatomic, strong) IBOutlet UITextField *sliderTextX;
@@ -104,29 +104,29 @@
     {
         double val = (double) (arc4random_uniform(range));
         double size = (double) (arc4random_uniform(range));
-        [yVals1 addObject:[[BubbleChartDataEntry alloc] initWithX:i y:val size:size icon: [UIImage imageNamed:@"icon"]]];
+        [yVals1 addObject:[[CHBubbleChartDataEntry alloc] initWithX:i y:val size:size icon: [UIImage imageNamed:@"icon"]]];
         
         val = (double) (arc4random_uniform(range));
         size = (double) (arc4random_uniform(range));
-        [yVals2 addObject:[[BubbleChartDataEntry alloc] initWithX:i y:val size:size icon: [UIImage imageNamed:@"icon"]]];
+        [yVals2 addObject:[[CHBubbleChartDataEntry alloc] initWithX:i y:val size:size icon: [UIImage imageNamed:@"icon"]]];
         
         val = (double) (arc4random_uniform(range));
         size = (double) (arc4random_uniform(range));
-        [yVals3 addObject:[[BubbleChartDataEntry alloc] initWithX:i y:val size:size]];
+        [yVals3 addObject:[[CHBubbleChartDataEntry alloc] initWithX:i y:val size:size]];
     }
     
-    BubbleChartDataSet *set1 = [[BubbleChartDataSet alloc] initWithValues:yVals1 label:@"DS 1"];
+    CHBubbleChartDataSet *set1 = [[CHBubbleChartDataSet alloc] initWithValues:yVals1 label:@"DS 1"];
     set1.drawIconsEnabled = NO;
-    [set1 setColor:ChartColorTemplates.colorful[0] alpha:0.50f];
+    [set1 setColor:CHChartColorTemplates.colorful[0] alpha:0.50f];
     [set1 setDrawValuesEnabled:YES];
     
-    BubbleChartDataSet *set2 = [[BubbleChartDataSet alloc] initWithValues:yVals2 label:@"DS 2"];
+    CHBubbleChartDataSet *set2 = [[CHBubbleChartDataSet alloc] initWithValues:yVals2 label:@"DS 2"];
     set2.iconsOffset = CGPointMake(0, 15);
-    [set2 setColor:ChartColorTemplates.colorful[1] alpha:0.50f];
+    [set2 setColor:CHChartColorTemplates.colorful[1] alpha:0.50f];
     [set2 setDrawValuesEnabled:YES];
     
-    BubbleChartDataSet *set3 = [[BubbleChartDataSet alloc] initWithValues:yVals3 label:@"DS 3"];
-    [set3 setColor:ChartColorTemplates.colorful[2] alpha:0.50f];
+    CHBubbleChartDataSet *set3 = [[CHBubbleChartDataSet alloc] initWithValues:yVals3 label:@"DS 3"];
+    [set3 setColor:CHChartColorTemplates.colorful[2] alpha:0.50f];
     [set3 setDrawValuesEnabled:YES];
     
     NSMutableArray *dataSets = [[NSMutableArray alloc] init];
@@ -134,7 +134,7 @@
     [dataSets addObject:set2];
     [dataSets addObject:set3];
     
-    BubbleChartData *data = [[BubbleChartData alloc] initWithDataSets:dataSets];
+    CHBubbleChartData *data = [[CHBubbleChartData alloc] initWithDataSets:dataSets];
     [data setDrawValues:NO];
     [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:7.f]];
     [data setHighlightCircleWidth: 1.5];
@@ -160,12 +160,12 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull )entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull )entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

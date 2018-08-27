@@ -12,9 +12,9 @@
 #import "LineChart1ViewController.h"
 #import "ChartsDemo_iOS-Swift.h"
 
-@interface LineChart1ViewController () <ChartViewDelegate>
+@interface LineChart1ViewController () <CHChartViewDelegate>
 
-@property (nonatomic, strong) IBOutlet LineChartView *chartView;
+@property (nonatomic, strong) IBOutlet CHLineChartView *chartView;
 @property (nonatomic, strong) IBOutlet UISlider *sliderX;
 @property (nonatomic, strong) IBOutlet UISlider *sliderY;
 @property (nonatomic, strong) IBOutlet UITextField *sliderTextX;
@@ -58,7 +58,7 @@
     _chartView.drawGridBackgroundEnabled = NO;
 
     // x-axis limit line
-    ChartLimitLine *llXAxis = [[ChartLimitLine alloc] initWithLimit:10.0 label:@"Index 10"];
+    CHChartLimitLine *llXAxis = [[CHChartLimitLine alloc] initWithLimit:10.0 label:@"Index 10"];
     llXAxis.lineWidth = 4.0;
     llXAxis.lineDashLengths = @[@(10.f), @(10.f), @(0.f)];
     llXAxis.labelPosition = ChartLimitLabelPositionRightBottom;
@@ -69,13 +69,13 @@
     _chartView.xAxis.gridLineDashLengths = @[@10.0, @10.0];
     _chartView.xAxis.gridLineDashPhase = 0.f;
     
-    ChartLimitLine *ll1 = [[ChartLimitLine alloc] initWithLimit:150.0 label:@"Upper Limit"];
+    CHChartLimitLine *ll1 = [[CHChartLimitLine alloc] initWithLimit:150.0 label:@"Upper Limit"];
     ll1.lineWidth = 4.0;
     ll1.lineDashLengths = @[@5.f, @5.f];
     ll1.labelPosition = ChartLimitLabelPositionRightTop;
     ll1.valueFont = [UIFont systemFontOfSize:10.0];
     
-    ChartLimitLine *ll2 = [[ChartLimitLine alloc] initWithLimit:-30.0 label:@"Lower Limit"];
+    CHChartLimitLine *ll2 = [[CHChartLimitLine alloc] initWithLimit:-30.0 label:@"Lower Limit"];
     ll2.lineWidth = 4.0;
     ll2.lineDashLengths = @[@5.f, @5.f];
     ll2.labelPosition = ChartLimitLabelPositionRightBottom;
@@ -138,7 +138,7 @@
     for (int i = 0; i < count; i++)
     {
         double val = arc4random_uniform(range) + 3;
-        [values addObject:[[ChartDataEntry alloc] initWithX:i y:val icon: [UIImage imageNamed:@"icon"]]];
+        [values addObject:[[CHChartDataEntry alloc] initWithX:i y:val icon: [UIImage imageNamed:@"icon"]]];
     }
     
     CHLineChartDataSet *set1 = nil;
@@ -182,7 +182,7 @@
         NSMutableArray *dataSets = [[NSMutableArray alloc] init];
         [dataSets addObject:set1];
         
-        LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
+        CHLineChartData *data = [[CHLineChartData alloc] initWithDataSets:dataSets];
         
         _chartView.data = data;
     }
@@ -192,7 +192,7 @@
 {
     if ([key isEqualToString:@"toggleFilled"])
     {
-        for (id<ILineChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHILineChartDataSet> set in _chartView.data.dataSets)
         {
             set.drawFilledEnabled = !set.isDrawFilledEnabled;
         }
@@ -203,7 +203,7 @@
     
     if ([key isEqualToString:@"toggleCircles"])
     {
-        for (id<ILineChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHILineChartDataSet> set in _chartView.data.dataSets)
         {
             set.drawCirclesEnabled = !set.isDrawCirclesEnabled;
         }
@@ -214,7 +214,7 @@
     
     if ([key isEqualToString:@"toggleCubic"])
     {
-        for (id<ILineChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHILineChartDataSet> set in _chartView.data.dataSets)
         {
             set.mode = set.mode == LineChartModeCubicBezier ? LineChartModeLinear : LineChartModeCubicBezier;
         }
@@ -225,7 +225,7 @@
 
     if ([key isEqualToString:@"toggleStepped"])
     {
-        for (id<ILineChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHILineChartDataSet> set in _chartView.data.dataSets)
         {
             switch (set.mode) {
                 case LineChartModeLinear:
@@ -242,7 +242,7 @@
     
     if ([key isEqualToString:@"toggleHorizontalCubic"])
     {
-        for (id<ILineChartDataSet> set in _chartView.data.dataSets)
+        for (id<CHILineChartDataSet> set in _chartView.data.dataSets)
         {
             set.mode = set.mode == LineChartModeHorizontalBezier ? LineChartModeCubicBezier : LineChartModeHorizontalBezier;
         }
@@ -266,12 +266,12 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(CHChartViewBase * __nonnull)chartView entry:(CHChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
 }
 
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+- (void)chartValueNothingSelected:(CHChartViewBase * __nonnull)chartView
 {
     NSLog(@"chartValueNothingSelected");
 }

@@ -13,7 +13,7 @@ import Foundation
 import Charts
 
 
-open class BalloonMarker: MarkerImage
+open class BalloonMarker: CHMarkerImage
 {
     @objc open var color: UIColor
     @objc open var arrowSize = CGSize(width: 15, height: 11)
@@ -181,7 +181,7 @@ open class BalloonMarker: MarkerImage
         context.restoreGState()
     }
     
-    open override func refreshContent(entry: CHChartDataEntry, highlight: Highlight)
+    open override func refreshContent(entry: CHChartDataEntry, highlight: CHHighlight)
     {
         setLabel(String(entry.y))
     }
